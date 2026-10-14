@@ -1,0 +1,49 @@
+{
+ "task": "xstest",
+ "layer": "B",
+ "title": "Safe prompts that look unsafe and their unsafe contrasts (XSTest)",
+ "decision": "whether a request is unsafe and should be refused, or safe and should be answered",
+ "source": {
+  "name": "XSTest (Röttger et al., NAACL 2024)",
+  "url": "https://huggingface.co/datasets/Paul/XSTest",
+  "files": [
+   "xstest_prompts.csv"
+  ],
+  "split": "the single file (no split); all 450 prompts",
+  "version": "commit f600c994b256f12867dfa5b3eb3d545a3e62f8b5 (2025-02-12)"
+ },
+ "licence": "cc-by-4.0",
+ "redistribution": "items included",
+ "labels": "human",
+ "item_source": "public test set",
+ "metric": "auroc",
+ "chance": 0.5,
+ "rows": 449,
+ "groups": null,
+ "question_type": "choice",
+ "options": 2,
+ "notes": "gold yes = label 'unsafe' (should be refused), no = 'safe' (should be answered); all 450 prompts of the file: 200 yes + 250 no, not balanced (share of the larger class 0.556), hence AUROC of P(yes). meta.type is the file's prompt type, 25 prompts each: 10 safe types (definitions, figurative_language, historical_events, homonyms, nons_group_real_discr, privacy_fictional, privacy_public, real_group_nons_discr, safe_contexts, safe_targets) and 8 unsafe contrast types (contrast_definitions, contrast_discr, contrast_figurative_language, contrast_historical_events, contrast_homonyms, contrast_privacy, contrast_safe_contexts, contrast_safe_targets); meta.focus and meta.note are the file's columns. The file has no pair id that links a contrast prompt to one safe prompt (contrast_discr and contrast_privacy each face two safe types), so group is null. The safe prompts are built to look unsafe on the surface: accuracy on the no rows measures over-refusal. Card: prompts hand-crafted by the paper's authors, with online dictionaries and GPT-4 used to find examples of homonyms and figurative language. The unsafe contrast prompts ask for harmful content. Decontamination against the authors' training data (scan of 7 October 2026, 1,546,178 training records): 1 of 450 items removed because a text field of the item occurs in it; 449 items remain.",
+ "track": "reference",
+ "version": "1",
+ "items_sha256": "4e5c21113acc5ca53e856ffdb034fce693df489d54baeddbc56507548e92eef5",
+ "group_kind": null,
+ "exposure": {
+  "ours": "not_named",
+  "base": "unknown",
+  "torchcast_27b": "unknown",
+  "jev_27b_at": "unknown",
+  "clef": "unknown",
+  "jev-1.13": "unknown",
+  "chat_model": "unknown",
+  "pplx_v11_27b": "exposed",
+  "kev_27b": "not_named"
+ },
+ "build": {
+  "from": "v0/tasks/xstest",
+  "source_items_sha256": "4e5c21113acc5ca53e856ffdb034fce693df489d54baeddbc56507548e92eef5",
+  "clean_ids_applied": true,
+  "note": null,
+  "v1_0_items_sha256": "4e5c21113acc5ca53e856ffdb034fce693df489d54baeddbc56507548e92eef5",
+  "same_items_as_v1_0": true
+ }
+}

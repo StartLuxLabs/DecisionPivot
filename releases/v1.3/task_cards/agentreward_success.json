@@ -1,0 +1,51 @@
+{
+ "task": "agentreward_success",
+ "layer": "D",
+ "title": "AgentRewardBench: did the web agent complete the task?",
+ "decision": "whether a web agent's trajectory (task, then URL, action and reasoning of every step) completed the task, as annotated by expert reviewers",
+ "source": {
+  "name": "AgentRewardBench (AgentRewardBench: Evaluating Automatic Evaluations of Web Agent Trajectories, arXiv:2504.08942)",
+  "url": "https://huggingface.co/datasets/McGill-NLP/agent-reward-bench",
+  "files": [
+   "data/annotations.csv",
+   "judgments/<benchmark>/<agent>/gpt-4o-mini-noscreen-noaxtree/<task>.json (all 1,302 files)"
+  ],
+  "split": "all 1,302 annotated trajectories (annotation file: 1,408 rows)",
+  "version": "commit b6d17e646009d6cb63d5dd7be78807b680693f61 (last modified 2025-04-21), downloaded 2026-10-07"
+ },
+ "licence": "no licence tag on the card; card 'Terms of Use': research use under fair use, third-party terms apply, derivatives must carry the terms (see README.md of this task)",
+ "redistribution": "rebuild script only",
+ "labels": "human",
+ "item_source": "public test set",
+ "metric": "accuracy",
+ "chance": 0.5,
+ "rows": 552,
+ "groups": null,
+ "question_type": "choice",
+ "options": 2,
+ "notes": "277 yes + 277 no. Source trajectories: 1,302; dropped before sampling: 8 (action history longer than 30,000 characters (no)); 3 (action history longer than 30,000 characters (yes)); 13 (disagreeing or unsure annotations); pools: 346 yes, 932 no. Labels: the experts' `trajectory_success` (Successful = yes, Unsuccessful = no); a trajectory with two annotations is used only if both agree. LENGTH MATCHING: successful trajectories are much shorter than failed ones, so a plain balanced draw (346 + 346) has a best single length threshold of 0.756 (audit rule, chance 0.5); rows were put in buckets by the length of the JSON text of `steps` (100 characters below 2,000, 1,000 above) and the same number was drawn from both classes in every bucket (random.Random(20261007), 41 buckets shared by both classes); that gives all the matched pairs the data allow, 277 + 277, so the task is smaller than 1,000 rows. Mean number of steps in the sample: 12.4 (yes), 14.8 (no). Rows by benchmark (yes/no): assistantbench 8/50, visualwebarena 60/80, webarena 111/101, workarena 98/46; by agent (yes/no): Qwen_Qwen2.5-VL-72B-Instruct 73/42, anthropic_claude-3.7-sonnet 84/114, gpt-4o-2024-11-20 81/71, meta-llama_Llama-3.3-70B-Instruct 39/50. The mix of benchmarks and agents differs between the classes (it is not matched). TEXT FORM: state.task = the goal, state.steps = the steps of the action history that the benchmark's own judge prompt renders (URL, action, the agent's reasoning; the final answer is the last action when the agent gave one), taken from the files of the gpt-4o-mini-noscreen-noaxtree judge; the judge's reply in those files, the page observations and the screenshots are not used. The expert labels were made with the screenshots and the full trajectory, which this text does not contain, so a text-only decision can be wrong for reasons the text cannot show; VisualWebArena tasks can refer to images. Annotators: 8 reviewers named by letter in the annotation file (meta.annotators); 52 rows have two annotations that agree. Terms of use of the data set (derivatives must include them) are in README.md; only the rebuild script is redistributed, not the rows. Decontamination against the authors' training data (scan of 7 October 2026, 1,546,178 training records): 1 of 554 items removed because a text field of the item occurs in it, and 1 more to restore the balance of the classes; 552 items remain.",
+ "track": "reference",
+ "version": "1",
+ "items_sha256": "41c308c0d8fead5fbbb177d54a48cd6acf545da82063da6a12906613437fa43a",
+ "group_kind": null,
+ "exposure": {
+  "ours": "not_named",
+  "base": "unknown",
+  "torchcast_27b": "unknown",
+  "jev_27b_at": "unknown",
+  "clef": "unknown",
+  "jev-1.13": "unknown",
+  "chat_model": "unknown",
+  "pplx_v11_27b": "not_named",
+  "kev_27b": "not_named",
+  "ours_final27": "not_named"
+ },
+ "build": {
+  "from": "v0/tasks/agentreward_success",
+  "source_items_sha256": "41c308c0d8fead5fbbb177d54a48cd6acf545da82063da6a12906613437fa43a",
+  "clean_ids_applied": true,
+  "note": null,
+  "v1_0_items_sha256": "41c308c0d8fead5fbbb177d54a48cd6acf545da82063da6a12906613437fa43a",
+  "same_items_as_v1_0": true
+ }
+}

@@ -1,0 +1,56 @@
+{
+ "task": "cuad_clause",
+ "layer": "E",
+ "title": "CUAD: does the contract contain a clause of the named category",
+ "decision": "whether a commercial contract contains a clause of a named category (41 categories of contract review)",
+ "source": {
+  "name": "CUAD v1, question-answer form (CUAD: An Expert-Annotated NLP Dataset for Legal Contract Review, arXiv:2103.06268)",
+  "url": "https://huggingface.co/datasets/theatticusproject/cuad-qa",
+  "files": [
+   "default/test/0000.parquet (branch refs/convert/parquet, sha256 f5ab125d0b96fa942d6e86b782e01feb5155f28a37684cbf7d1e260656c91130)"
+  ],
+  "split": "test (4,182 rows = 102 contracts x 41 categories)",
+  "version": "parquet branch commit d9c4ee0250ae2eb97bdb5b50773ab14ea62d0631; main at commit 6d9a118fb629814c4384a1e63cfc84f5c01894b3 (2024-05-23)"
+ },
+ "licence": "cc-by-4.0; card text: \"CUAD is licensed under the Creative Commons Attribution 4.0 (CC BY 4.0) license and free to the public for commercial and non-commercial use.\"",
+ "redistribution": "items included",
+ "labels": "human",
+ "item_source": "public test set",
+ "metric": "accuracy",
+ "chance": 0.5,
+ "rows": 192,
+ "groups": null,
+ "question_type": "choice",
+ "options": 2,
+ "notes": "363 yes + 363 no, with equal class counts inside every category and, within a category, inside each of three bands of contract length (below 15,000, 15,000 to 30,000, above 30,000 characters; longer contracts hold more clause types). Contracts longer than 60,000 characters are dropped (27 of 102 contracts, 1,107 of 4,182 rows); the pool holds 757 yes and 2,318 no rows. Label: yes = the row has at least one span annotated by the legal experts for this category, no = none (absence of an annotation, not a separate judgment). The state holds the whole contract (not an excerpt), the category name and its description from the source question. In the source the category predicts the label (Document Name and Parties are annotated in every contract, rare clause types almost never): a balanced sample without matching (500 yes + 500 no) lets a rule that sees only the category score 0.72 at a 20,000-character limit. Here every yes row has a no row of the same category and length band, yes rows without a partner are left out, and that rule scores 0.500. Up to 41 rows share one contract (meta.contract; 75 contracts in the task). The card adds that the creators make no representation about the licence status of the underlying contracts (public EDGAR filings). Rows per category (yes/no): Affiliate License-Licensee 6/6; Affiliate License-Licensor 2/2; Agreement Date 5/5; Anti-Assignment 16/16; Audit Rights 16/16; Cap On Liability 19/19; Change Of Control 12/12; Competitive Restriction Exception 8/8; Covenant Not To Sue 10/10; Document Name 0/0; Effective Date 20/20; Exclusivity 17/17; Expiration Date 14/14; Governing Law 12/12; Insurance 15/15; Ip Ownership Assignment 12/12; Irrevocable Or Perpetual License 6/6; Joint Ip Ownership 3/3; License Grant 16/16; Liquidated Damages 4/4; Minimum Commitment 15/15; Most Favored Nation 2/2; No-Solicit Of Customers 3/3; No-Solicit Of Employees 5/5; Non-Compete 10/10; Non-Disparagement 5/5; Non-Transferable License 11/11; Notice Period To Terminate Renewal 9/9; Parties 0/0; Post-Termination Services 12/12; Price Restrictions 0/0; Renewal Term 14/14; Revenue/Profit Sharing 19/19; Rofr/Rofo/Rofn 7/7; Source Code Escrow 0/0; Termination For Convenience 13/13; Third Party Beneficiary 2/2; Uncapped Liability 6/6; Unlimited/All-You-Can-Eat-License 2/2; Volume Restriction 10/10; Warranty Duration 5/5. Decontamination against the authors' training data (scan of 7 October 2026, 1,546,178 training records): 307 of 726 items removed because a text field of the item occurs in it, and 99 more to restore the balance of the classes; 320 items remain. Decontamination against the training data of the final StartLux-Decision-27B (scan of 10 October 2026, 3,252,020 training records of Stage 1, Stage 2, Stage 3 and the RL pool): 83 of 320 items removed because a text field of the item occurs in it, and 45 more to restore the balance of the classes; 192 items remain.",
+ "track": "reference",
+ "version": "2",
+ "items_sha256": "7820dc639f42125aa1d48c3a8645af5d75a37f37a7d210b67089d827ee9acbf2",
+ "group_kind": null,
+ "exposure": {
+  "ours": "exposed",
+  "base": "unknown",
+  "torchcast_27b": "unknown",
+  "jev_27b_at": "unknown",
+  "clef": "unknown",
+  "jev-1.13": "unknown",
+  "chat_model": "unknown",
+  "pplx_v11_27b": "exposed",
+  "kev_27b": "exposed",
+  "ours_final27": "exposed"
+ },
+ "build": {
+  "from": "v0/tasks/cuad_clause",
+  "source_items_sha256": "e50df176adf863364d77c1b912915085a802f4c4897281c6412412b03d84500c",
+  "clean_ids_applied": true,
+  "note": null,
+  "v1_0_items_sha256": "e50df176adf863364d77c1b912915085a802f4c4897281c6412412b03d84500c",
+  "same_items_as_v1_0": true,
+  "v1_2_items_sha256": "e50df176adf863364d77c1b912915085a802f4c4897281c6412412b03d84500c",
+  "same_items_as_v1_2": false,
+  "cleaned_v1_3": "clean_seen_final27.py"
+ },
+ "accepts_items_sha256": [
+  "e50df176adf863364d77c1b912915085a802f4c4897281c6412412b03d84500c"
+ ]
+}

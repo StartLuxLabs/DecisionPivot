@@ -1,0 +1,49 @@
+{
+ "task": "folio_validation",
+ "layer": "E",
+ "title": "FOLIO validation: first-order-logic reasoning in natural language",
+ "decision": "whether a conclusion is true, false or undetermined given a set of premises",
+ "source": {
+  "name": "FOLIO: Natural Language Reasoning with First-Order Logic (arXiv:2209.00840)",
+  "url": "https://github.com/Yale-LILY/FOLIO",
+  "files": [
+   "data/v0.0/folio-validation.jsonl"
+  ],
+  "split": "validation, v0.0 (204 rows; test set unreleased)",
+  "version": "commit 5d7bb84c7edab3fb358e057d2807f19cf5cf5e2d"
+ },
+ "licence": "GitHub LICENSE file: \"Attribution-ShareAlike 4.0 International\" (the gated Hugging Face card yale-nlp/FOLIO is tagged \"mit\")",
+ "redistribution": "items included (share-alike)",
+ "labels": "human",
+ "item_source": "public test set",
+ "metric": "accuracy",
+ "chance": 0.3333,
+ "rows": 204,
+ "groups": null,
+ "question_type": "choice",
+ "options": 3,
+ "notes": "All 204 rows of the v0.0 validation file: True 72, False 63, Uncertain 69. The rows share 73 premise sets (meta.story, numbered by first appearance), so they are not independent: resample by story for intervals. The file carries no ids; source_id is the line number. The premises (a list in the source) are joined with newlines, nothing else is changed. This is the validation split of FOLIO v0.0 from GitHub: the test set is unreleased, and the corrected release announced in the repository README is on a gated Hugging Face card (login required) and was not used. Validation and training data are public, so a model may have seen them.",
+ "track": "reference",
+ "version": "1",
+ "items_sha256": "fac6d14070c7c85bde561bd4ce2591addfb19677e3cfcaabb0d0445131d530a2",
+ "group_kind": null,
+ "exposure": {
+  "ours": "not_named",
+  "base": "unknown",
+  "torchcast_27b": "unknown",
+  "jev_27b_at": "unknown",
+  "clef": "unknown",
+  "jev-1.13": "unknown",
+  "chat_model": "unknown",
+  "pplx_v11_27b": "exposed",
+  "kev_27b": "not_named"
+ },
+ "build": {
+  "from": "v0/tasks/folio_validation",
+  "source_items_sha256": "fac6d14070c7c85bde561bd4ce2591addfb19677e3cfcaabb0d0445131d530a2",
+  "clean_ids_applied": true,
+  "note": null,
+  "v1_0_items_sha256": "fac6d14070c7c85bde561bd4ce2591addfb19677e3cfcaabb0d0445131d530a2",
+  "same_items_as_v1_0": true
+ }
+}

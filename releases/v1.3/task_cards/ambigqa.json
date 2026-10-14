@@ -1,0 +1,59 @@
+{
+ "task": "ambigqa",
+ "layer": "A",
+ "title": "Ambiguous or unambiguous question",
+ "decision": "whether an open-domain question is ambiguous (several distinct interpretations with different answers) or has a single answer, judged from the question alone",
+ "source": {
+  "name": "AmbigQA (AmbigNQ): Min et al., AmbigQA: Answering Ambiguous Open-domain Questions (2020), arXiv:2004.10645",
+  "url": "https://huggingface.co/datasets/sewon/ambig_qa",
+  "files": [
+   "https://huggingface.co/datasets/sewon/ambig_qa/resolve/e969d0132f4dd28c2939d55be34f1788c00ccfe7/light/validation-00000-of-00001.parquet"
+  ],
+  "sha256": {
+   "light/validation-00000-of-00001.parquet": "bdb0ad1c39e6df47372d38c9b82505d8d790053cd736d497fb7c387c2223121f"
+  },
+  "split": "validation, configuration light (2,002 questions); test annotations are not public",
+  "version": "commit e969d0132f4dd28c2939d55be34f1788c00ccfe7 (2024-01-09)"
+ },
+ "licence": "cc-by-sa-3.0",
+ "redistribution": "items included (share-alike)",
+ "labels": "human",
+ "item_source": "public test set",
+ "metric": "accuracy",
+ "chance": 0.5,
+ "rows": 990,
+ "groups": null,
+ "question_type": "choice",
+ "options": 2,
+ "notes": "Derived label, not a field of the source: yes = every released annotation of the question has type multipleQAs (1,002 questions, 642 of them with one annotation), no = every annotation has type singleAnswer (830, 145 with one annotation); 170 questions whose annotations disagree on the type are dropped (787 questions have one annotation, 1,120 two, 95 three). Sample: 500 yes + 500 no (317 and 87 of them rest on one annotation; meta.annotation_types). The questions are search queries from NQ-open; the card says the ambiguities are \"sometimes subtle, many of which are only apparent after examining evidence provided by a very large text corpus\", so the label is hard to recover from the question alone. Text unchanged. Decontamination against the authors' training data (scan of 7 October 2026, 1,546,178 training records): 1 of 1000 items removed because a text field of the item occurs in it, and 1 more to restore the balance of the classes; 998 items remain. Decontamination against the training data of the final StartLux-Decision-27B (scan of 10 October 2026, 3,252,020 training records of Stage 1, Stage 2, Stage 3 and the RL pool): 7 of 998 items removed because a text field of the item occurs in it, and 1 more to restore the balance of the classes; 990 items remain.",
+ "track": "reference",
+ "version": "2",
+ "items_sha256": "9b83482e12dc163244c85138dabede5a5ecfca222e313af682ea493fe1c13247",
+ "group_kind": null,
+ "exposure": {
+  "ours": "not_named",
+  "base": "unknown",
+  "torchcast_27b": "unknown",
+  "jev_27b_at": "unknown",
+  "clef": "unknown",
+  "jev-1.13": "unknown",
+  "chat_model": "unknown",
+  "pplx_v11_27b": "not_named",
+  "kev_27b": "not_named",
+  "ours_final27": "not_named"
+ },
+ "build": {
+  "from": "v0/tasks/ambigqa",
+  "source_items_sha256": "ab3c76f7dba329c5d2297ada15b7d2c04744ee1eedffe46048d27cfc1d4d1844",
+  "clean_ids_applied": true,
+  "note": null,
+  "v1_0_items_sha256": "ab3c76f7dba329c5d2297ada15b7d2c04744ee1eedffe46048d27cfc1d4d1844",
+  "same_items_as_v1_0": true,
+  "v1_2_items_sha256": "ab3c76f7dba329c5d2297ada15b7d2c04744ee1eedffe46048d27cfc1d4d1844",
+  "same_items_as_v1_2": false,
+  "cleaned_v1_3": "clean_seen_final27.py"
+ },
+ "accepts_items_sha256": [
+  "ab3c76f7dba329c5d2297ada15b7d2c04744ee1eedffe46048d27cfc1d4d1844"
+ ]
+}

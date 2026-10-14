@@ -1,0 +1,49 @@
+{
+ "task": "squad2_answerable",
+ "layer": "C",
+ "title": "SQuAD 2.0: can the question be answered from the passage?",
+ "decision": "whether a question can be answered from the given passage (yes) or not (no)",
+ "source": {
+  "name": "SQuAD 2.0 (Know What You Don't Know: Unanswerable Questions for SQuAD, arXiv:1806.03822)",
+  "url": "https://huggingface.co/datasets/rajpurkar/squad_v2",
+  "files": [
+   "squad_v2/validation-00000-of-00001.parquet"
+  ],
+  "split": "validation (11,873 rows: 5,928 answerable, 5,945 unanswerable)",
+  "version": "commit 3ffb306f725f7d2ce8394bc1873b24868140c412 (last modified 2024-03-04), downloaded 2026-10-07"
+ },
+ "licence": "cc-by-sa-4.0",
+ "redistribution": "items included (share-alike)",
+ "labels": "human",
+ "item_source": "public test set",
+ "metric": "accuracy",
+ "chance": 0.5,
+ "rows": 944,
+ "groups": null,
+ "question_type": "choice",
+ "options": 2,
+ "notes": "500 answerable (gold yes: `answers.text` not empty) + 500 unanswerable (gold no) questions, sampled per class with random.Random(20261007) (answerable first) after sorting by id. Before sampling, 14 rows were dropped because the same passage and question (case and spacing ignored) occur with both labels, and 7 repeated rows with the same label (first id kept); pools: 5,915 answerable, 5,937 unanswerable. Passages are shared: the 1000 rows use 701 different passages from 35 articles (meta.title). The validation split is the evaluation split with public labels (the card has no test split). Texts are copied unchanged (state.passage = field `context`). Decontamination against the authors' training data (scan of 7 October 2026, 1,546,178 training records): 49 of 1000 items removed because a text field of the item occurs in it, and 7 more to restore the balance of the classes; 944 items remain.",
+ "track": "reference",
+ "version": "1",
+ "items_sha256": "44ac2a424168b0558c28a4c051628fb4a569a763b70fb4b3c5bffc57c2d4e2c6",
+ "group_kind": null,
+ "exposure": {
+  "ours": "exposed",
+  "base": "unknown",
+  "torchcast_27b": "unknown",
+  "jev_27b_at": "unknown",
+  "clef": "unknown",
+  "jev-1.13": "unknown",
+  "chat_model": "unknown",
+  "pplx_v11_27b": "unknown",
+  "kev_27b": "not_named"
+ },
+ "build": {
+  "from": "v0/tasks/squad2_answerable",
+  "source_items_sha256": "44ac2a424168b0558c28a4c051628fb4a569a763b70fb4b3c5bffc57c2d4e2c6",
+  "clean_ids_applied": true,
+  "note": null,
+  "v1_0_items_sha256": "44ac2a424168b0558c28a4c051628fb4a569a763b70fb4b3c5bffc57c2d4e2c6",
+  "same_items_as_v1_0": true
+ }
+}

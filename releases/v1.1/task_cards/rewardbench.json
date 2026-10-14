@@ -1,0 +1,49 @@
+{
+ "task": "rewardbench",
+ "layer": "C",
+ "title": "RewardBench: which of two responses is the better one?",
+ "decision": "which of two responses to a prompt is the better one (the response the data set marks as chosen)",
+ "source": {
+  "name": "RewardBench (RewardBench: Evaluating Reward Models for Language Modeling, arXiv:2403.13787)",
+  "url": "https://huggingface.co/datasets/allenai/reward-bench",
+  "files": [
+   "data/filtered-00000-of-00001.parquet"
+  ],
+  "split": "filtered (2,985 rows; 2,566 rows in 18 subsets after leaving out the llmbar-* subsets)",
+  "version": "commit 168d848cdbbea9764fae4a544dc9ca1e6cca4931 (last modified 2024-09-09), downloaded 2026-10-07"
+ },
+ "licence": "odc-by; card: \"We release the RewardBench dataset under ODC-BY requiring the user to follow the licenses of the subsequent parts\": AlpacaEval CC By NC 4.0, MT Bench Apache 2.0, LLMBar MIT License, Do Not Answer CC BY NC SA 4.0, XSTest CC By 4.0, HumanEvalPack MIT License, PRM Math MIT License; refusals data by AI2 \"released as MIT for now\"",
+ "redistribution": "rebuild script only",
+ "labels": "mixed: per subset the chosen response comes from the stronger model or has the higher rating, is the manually curated one, is the refusal or the compliance that is called for, is working code against buggy code, or a human reference against a model error; the card reports manual filtering",
+ "item_source": "public test set",
+ "metric": "accuracy",
+ "chance": 0.5,
+ "rows": 912,
+ "groups": null,
+ "question_type": "choice",
+ "options": 2,
+ "notes": "The 419 rows of the llmbar-* subsets are left out: they are the instances of the task llmbar, with the same preferred output, and would be counted twice. 1000 of the remaining 2,566 rows, sampled per subset in proportion to its size with random.Random(20261007) after sorting by id: alpacaeval-easy 39, alpacaeval-hard 37, alpacaeval-length 37, donotanswer 53, hep-cpp 64, hep-go 64, hep-java 64, hep-js 64, hep-python 64, hep-rust 64, math-prm 174, mt-bench-easy 11, mt-bench-hard 14, mt-bench-med 16, refusals-dangerous 39, refusals-offensive 39, xstest-should-refuse 60, xstest-should-respond 97. Gold A 500, B 500: the order of the two responses was drawn per row with the same generator so that the chosen one is first in half of the rows of each subset; meta.order names the source fields shown as response A and B. The id of the file is not unique (3692 occurs in two subsets), so item ids carry the subset. Redistribution is set to rebuild script only because the card makes the licences of the parts binding and two of them are non-commercial: rows by part in this sample — alpacaeval* 113 (CC By NC 4.0), mt-bench* 41 (Apache 2.0), donotanswer* 53 (CC BY NC SA 4.0), xstest* 157 (CC By 4.0), hep* 384 (MIT License), math-prm* 174 (MIT License), refusals* 78 (MIT for now). The xstest-* subsets use the prompts of the task xstest for another decision (which response is better). Responses are model-written or human-written (meta.chosen_model, meta.rejected_model): chosen is `human` in 559 rows, rejected is `human` in 441 rows. Decontamination against the authors' training data (scan of 7 October 2026, 1,546,178 training records): 88 of 1000 items removed because a text field of the item occurs in it; 912 items remain.",
+ "track": "reference",
+ "version": "1",
+ "items_sha256": "167d769696e6af73b5047725e20f422f10ab118941a6752829881344b90d875a",
+ "group_kind": null,
+ "exposure": {
+  "ours": "exposed",
+  "base": "unknown",
+  "torchcast_27b": "unknown",
+  "jev_27b_at": "unknown",
+  "clef": "unknown",
+  "jev-1.13": "unknown",
+  "chat_model": "unknown",
+  "pplx_v11_27b": "exposed",
+  "kev_27b": "not_named"
+ },
+ "build": {
+  "from": "v0/tasks/rewardbench",
+  "source_items_sha256": "167d769696e6af73b5047725e20f422f10ab118941a6752829881344b90d875a",
+  "clean_ids_applied": true,
+  "note": null,
+  "v1_0_items_sha256": "167d769696e6af73b5047725e20f422f10ab118941a6752829881344b90d875a",
+  "same_items_as_v1_0": true
+ }
+}

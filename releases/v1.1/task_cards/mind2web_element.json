@@ -1,0 +1,56 @@
+{
+ "task": "mind2web_element",
+ "layer": "D",
+ "title": "Mind2Web: which page element should the agent act on next?",
+ "decision": "which of ten page elements (the target element of the step and nine other elements of the page) the agent should act on next, given the task and the actions already taken",
+ "source": {
+  "name": "Multimodal-Mind2Web (text columns of the test splits; Mind2Web: Towards a Generalist Agent for the Web, arXiv:2306.06070; Multimodal-Mind2Web: GPT-4V(ision) is a Generalist Web Agent, if Grounded, arXiv:2401.01614)",
+  "url": "https://huggingface.co/datasets/osunlp/Multimodal-Mind2Web",
+  "files": [
+   "data/test_domain-00004-of-00011-d94e067efdd549d4.parquet",
+   "data/test_task-00001-of-00005-bdd2cef984845c42.parquet",
+   "data/test_task-00002-of-00005-e2696e51f1c78db8.parquet",
+   "data/test_task-00003-of-00005-944419f61d7cf1fb.parquet",
+   "data/test_task-00004-of-00005-a3a487e53da307b4.parquet",
+   "data/test_website-00001-of-00004-b0b6abaa088e90d8.parquet",
+   "data/test_website-00002-of-00004-11198eb4fc38a82b.parquet",
+   "data/test_website-00003-of-00004-3019191fc3984b5e.parquet"
+  ],
+  "split": "test_task, test_website, test_domain: test_task 1071 of 1,339 rows (4 of 5 shards), test_website 764 of 1,019 rows (3 of 4 shards), test_domain 369 of 4,060 rows (1 of 11 shards)",
+  "version": "commit 1b4c6a8cf9f77b7a5e0d641959935c80c4a05889 (last modified 2024-06-05), downloaded 2026-10-07"
+ },
+ "licence": "openrail (license tag of the Multimodal-Mind2Web card; the Mind2Web card says cc-by-4.0)",
+ "redistribution": "rebuild script only",
+ "labels": "human",
+ "item_source": "public test set",
+ "metric": "accuracy",
+ "chance": 0.1,
+ "rows": 997,
+ "groups": null,
+ "question_type": "choice",
+ "options": 10,
+ "notes": "1000 steps (test_task 333, test_website 333, test_domain 334) of 289 tasks; operations of the target: CLICK 817, SELECT 52, TYPE 131. Gold = the positive candidate of the step (the first of `pos_candidates`; 26 rows have more than one positive candidate, the others are then not among the options). AVAILABILITY: the card's parquet shards hold screenshots; only shards of at most 300 MB were downloaded, so each split is a subset: test_task 1071 of 1,339 rows (4 of 5 shards), test_website 764 of 1,019 (3 of 4), test_domain 369 of 4,060 (1 of 11); the shards are not a random sample of a split, and the sample covers 52, 10 and 22 websites (test_task, test_website, test_domain); the test_domain rows come from the domains Info, Service only. Rows without a positive candidate: test_task 58, test_website 35, test_domain 15 (not used); other rows rejected while drawing: none. Equal shares of the three splits (333, 333, 334), drawn per split in a random order of the action ids with random.Random(20261007); several steps of one task can be in the sample (meta.annotation_id). OPTIONS: ten per row, keys A..J: the positive and nine negatives drawn from the row's `neg_candidates` (random elements of the row's candidate list, which has a median of 408 negatives, not chosen for similarity to the target and not checked for being equivalent to it, e.g. a container of the target; the target's tag is a link, button, input, select, textarea or label in 81% of the rows against 31% of the negatives, and the target is the only such option in 4% of the rows), skipping negatives whose option text equals the positive's or one already drawn; the order is drawn per row with a generator seeded with 20261007 and the action id (meta.gold_position, meta.option_node_ids); gold key counts A 94, B 103, C 108, D 105, E 103, F 115, G 92, H 87, I 96, J 97. Option text = cleaned representation of the element taken from the row's cleaned HTML: the opening tag with the attributes kept in the cleaned page (no backend_node_id), the visible text of the element and its descendants, the closing tag (an element without text is written as an empty tag), cut at 300 characters; the candidate records themselves hold only tag and attributes (class, id, bounding box ...), no text. The Mind2Web authors' own representation is a pruned page for the whole row; this one is per element. state.task = confirmed task, state.previous_actions = the strings of `action_reprs` before the target index, as given (the target's own string is not in the state). The page itself is not part of the state. Labels are the elements chosen by the crowd workers who recorded the tasks. Decontamination against the authors' training data (scan of 7 October 2026, 1,546,178 training records): 3 of 1000 items removed because a text field of the item occurs in it; 997 items remain.",
+ "track": "reference",
+ "version": "1",
+ "items_sha256": "b8f1fdcb8aea7a6a37a47a3291dd517835db31da7285b77c535e73039769d62e",
+ "group_kind": null,
+ "exposure": {
+  "ours": "not_named",
+  "base": "unknown",
+  "torchcast_27b": "unknown",
+  "jev_27b_at": "unknown",
+  "clef": "unknown",
+  "jev-1.13": "unknown",
+  "chat_model": "unknown",
+  "pplx_v11_27b": "not_named",
+  "kev_27b": "not_named"
+ },
+ "build": {
+  "from": "v0/tasks/mind2web_element",
+  "source_items_sha256": "b8f1fdcb8aea7a6a37a47a3291dd517835db31da7285b77c535e73039769d62e",
+  "clean_ids_applied": true,
+  "note": null,
+  "v1_0_items_sha256": "b8f1fdcb8aea7a6a37a47a3291dd517835db31da7285b77c535e73039769d62e",
+  "same_items_as_v1_0": true
+ }
+}

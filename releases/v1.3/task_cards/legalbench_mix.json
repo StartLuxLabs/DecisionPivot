@@ -1,0 +1,66 @@
+{
+ "task": "legalbench_mix",
+ "layer": "E",
+ "title": "LegalBench mix: ten legal classification tasks from different areas",
+ "decision": "the answer to a legal classification question about a short text (contract clause, fact pattern, statute and case, policy and claim, court sentence, bill and company)",
+ "source": {
+  "name": "LegalBench: A Collaboratively Built Benchmark for Measuring Legal Reasoning in Large Language Models (arXiv:2308.11462)",
+  "url": "https://huggingface.co/datasets/nguha/legalbench",
+  "files": [
+   "data/cuad_license_grant/test.tsv",
+   "data/diversity_6/test.tsv",
+   "data/sara_entailment/test.tsv",
+   "data/insurance_policy_interpretation/test.tsv",
+   "data/scalr/test.tsv",
+   "data/overruling/test.tsv",
+   "data/corporate_lobbying/test.tsv",
+   "data/maud_type_of_consideration/test.tsv",
+   "data/privacy_policy_qa/test.tsv",
+   "data/nys_judicial_ethics/test.tsv",
+   "task_metadata.json"
+  ],
+  "split": "test (per task)",
+  "version": "data: commit daec8237410aa23e3faf4bc41ad8b3a7e1696826 (2026-03-30); task cards with the licences: github.com/HazyResearch/legalbench commit b46bf4ffae90524b2b72aaa30e7745fe9db64481"
+ },
+ "licence": "per task, as written on the task cards: \"CC By 4.0\" / \"CC by 4.0\" (seven sub-tasks), \"MIT\" (three sub-tasks); Hugging Face card: tag \"cc-by-4.0\", text \"LegalBench tasks are subject to different licenses.\"",
+ "redistribution": "items included",
+ "labels": "mixed: expert or crowd annotation in most sub-tasks; generated fact patterns with computed labels in diversity_6; randomly drawn negatives in cuad_license_grant; questions rewritten by a chat model from committee digests in nys_judicial_ethics",
+ "item_source": "public test set",
+ "metric": "accuracy",
+ "chance": 0.4283,
+ "rows": 910,
+ "groups": null,
+ "question_type": "choice",
+ "options": 5,
+ "notes": "Ten sub-tasks, 100 test rows each (meta.subtask); the options field gives the largest number of options (2 in seven sub-tasks, 3, 4 and 5 in one each) and chance is the mean of 1 / options over the rows. Two-label sub-tasks are drawn 50 + 50, the others at the class ratio of their test split. Sub-tasks with area, licence as written on the task card, size of the test split and sampled rows per option: cuad_license_grant [contract clauses (commercial contracts, from CUAD); card licence \"CC By 4.0\"; 1,396 test rows; yes 50, no 50]; diversity_6 [civil procedure (diversity jurisdiction; rule given, generated fact patterns); card licence \"CC By 4.0\"; 300 test rows; yes 50, no 50]; sara_entailment [statutory reasoning (US federal tax statutes, SARA); card licence \"MIT\"; 272 test rows; Entailment 50, Contradiction 50]; insurance_policy_interpretation [insurance policy interpretation; card licence \"CC By 4.0\"; 133 test rows; A 35, B 22, C 43]; scalr [Supreme Court questions presented and holdings (SCALR); card licence \"CC by 4.0\"; 571 test rows; 0 16, 1 18, 2 25, 3 17, 4 24]; overruling [case law (sentences that overrule a precedent); card licence \"CC By 4.0\"; 2,394 test rows; yes 50, no 50]; corporate_lobbying [legislation (relevance of a bill to a company); card licence \"CC By 4.0\"; 490 test rows; yes 50, no 50]; maud_type_of_consideration [merger agreements (deal points, from MAUD); card licence \"CC By 4.0\"; 172 test rows; A 50, B 28, C 18, D 4]; privacy_policy_qa [privacy policies (does a clause answer a user's question, from PrivacyQA); card licence \"MIT\"; 10,923 test rows; Relevant 50, Irrelevant 50]; nys_judicial_ethics [judicial ethics (New York advisory opinions); card licence \"MIT\"; 292 test rows; yes 50, no 50]. Admitted: tasks with 2 to 5 answer labels, at least 100 test rows and a card licence of CC BY 4.0 or MIT; hearsay (94 test rows) and personal_jurisdiction (50) are below the row limit, diversity_6 stands in as the rule-application task on fact patterns. The state holds the columns of the task's prompt template under their column names (text is the clause, sentence or agreement segment the question speaks of; in sara_entailment the column question holds the statement; in scalr the options point to the columns choice_0 to choice_4). The question is one sentence from the task's prompt template, not the full LegalBench prompt (no few-shot examples), so scores are not comparable with published LegalBench numbers. cuad_license_grant is built by LegalBench from CUAD clauses and may share contract text with the task cuad_clause. LegalBench's few-shot train rows (4 to 8 per task) are not used. Decontamination against the authors' training data (scan of 7 October 2026, 1,546,178 training records): 58 of 1000 items removed because a text field of the item occurs in it; 942 items remain. Decontamination against the training data of the final StartLux-Decision-27B (scan of 10 October 2026, 3,252,020 training records of Stage 1, Stage 2, Stage 3 and the RL pool): 32 of 942 items removed because a text field of the item occurs in it; 910 items remain.",
+ "track": "reference",
+ "version": "2",
+ "items_sha256": "502234a7f98c8bfffe45b795448e9efb9af5fcc868d3d3aabe05227f07734157",
+ "group_kind": null,
+ "exposure": {
+  "ours": "exposed",
+  "base": "unknown",
+  "torchcast_27b": "unknown",
+  "jev_27b_at": "unknown",
+  "clef": "unknown",
+  "jev-1.13": "unknown",
+  "chat_model": "unknown",
+  "pplx_v11_27b": "exposed",
+  "kev_27b": "exposed",
+  "ours_final27": "exposed"
+ },
+ "build": {
+  "from": "v0/tasks/legalbench_mix",
+  "source_items_sha256": "14b20c3e382c18c70039efd718a8d3b47373e0954b954ec4a128a31e72919b47",
+  "clean_ids_applied": true,
+  "note": null,
+  "v1_0_items_sha256": "14b20c3e382c18c70039efd718a8d3b47373e0954b954ec4a128a31e72919b47",
+  "same_items_as_v1_0": true,
+  "v1_2_items_sha256": "14b20c3e382c18c70039efd718a8d3b47373e0954b954ec4a128a31e72919b47",
+  "same_items_as_v1_2": false,
+  "cleaned_v1_3": "clean_seen_final27.py"
+ },
+ "accepts_items_sha256": [
+  "14b20c3e382c18c70039efd718a8d3b47373e0954b954ec4a128a31e72919b47"
+ ]
+}

@@ -1,0 +1,50 @@
+{
+ "task": "entity_match_abt_buy",
+ "layer": "G",
+ "title": "Abt-Buy product matching (DeepMatcher test split)",
+ "decision": "whether two product records from two shops describe the same product",
+ "source": {
+  "name": "Abt-Buy (Köpcke, Thor, Rahm, VLDB 2010) in the textual version and split of DeepMatcher (Mudgal et al., SIGMOD 2018)",
+  "url": "https://github.com/anhaidgroup/deepmatcher/blob/master/Datasets.md",
+  "files": [
+   "http://pages.cs.wisc.edu/~anhai/data1/deepmatcher_data/Textual/Abt-Buy/abt_buy_exp_data.zip (sha256 cd806d925aca21e6ab942b239353a10ee88904c59d3d3e3da6a74e364e9200a1): exp_data/test.csv, exp_data/tableA.csv, exp_data/tableB.csv"
+  ],
+  "split": "test (1,916 labelled pairs, 206 matches)",
+  "version": "archive files dated 2018-06-04; Datasets.md at commit a89ffe6cd246f690afd2772e47eb071741160f16"
+ },
+ "licence": "DeepMatcher Datasets.md: no licence stated for the data (repository code: BSD 3-Clause); origin of the records, Leipzig benchmark page: \"These datasets are made available by the database group of Prof. Erhard Rahm under the Creative Commons license\" (link target: https://creativecommons.org/licenses/by/4.0/)",
+ "redistribution": "rebuild script only",
+ "labels": "mixed: matches from the reference mapping of the original authors; non-matches are blocked candidate pairs that are not in the mapping",
+ "item_source": "public test set",
+ "metric": "auroc",
+ "chance": 0.5,
+ "rows": 996,
+ "groups": null,
+ "question_type": "choice",
+ "options": 2,
+ "notes": "108 matches + 892 non-matches: the class ratio of the test split (206 matches in 1,916 pairs), drawn per class (seed 20261007). record_a is the row of tableA.csv (left), record_b the row of tableB.csv (right), fields name, description, price; values are the preprocessed (lower-cased, tokenised) strings of the DeepMatcher files, empty where the source is empty. The pairs are candidates that survived DeepMatcher's blocking; a pair is a match if it is in the reference mapping of the original authors, otherwise a non-match. The split is DeepMatcher's random 3:1:1 split of the pairs, so the same records also occur in the public training and validation pairs. Licence: the origin (Leipzig) is under CC BY 4.0, the DeepMatcher files state none: kept as rebuild script only. Decontamination against the authors' training data (scan of 7 October 2026, 1,546,178 training records): 4 of 1000 items removed because a text field of the item occurs in it; 996 items remain.",
+ "track": "reference",
+ "version": "1",
+ "items_sha256": "4e5eafa918d430b8fa275339016771298ecd460984ac434c787087a77aee0796",
+ "group_kind": null,
+ "exposure": {
+  "ours": "not_named",
+  "base": "unknown",
+  "torchcast_27b": "unknown",
+  "jev_27b_at": "unknown",
+  "clef": "unknown",
+  "jev-1.13": "unknown",
+  "chat_model": "unknown",
+  "pplx_v11_27b": "not_named",
+  "kev_27b": "not_named",
+  "ours_final27": "not_named"
+ },
+ "build": {
+  "from": "v0/tasks/entity_match_abt_buy",
+  "source_items_sha256": "4e5eafa918d430b8fa275339016771298ecd460984ac434c787087a77aee0796",
+  "clean_ids_applied": true,
+  "note": null,
+  "v1_0_items_sha256": "4e5eafa918d430b8fa275339016771298ecd460984ac434c787087a77aee0796",
+  "same_items_as_v1_0": true
+ }
+}

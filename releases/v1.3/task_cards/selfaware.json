@@ -1,0 +1,59 @@
+{
+ "task": "selfaware",
+ "layer": "A",
+ "title": "Answerable or unanswerable question",
+ "decision": "whether a question can be answered at all (answerable) or not (unanswerable), judged from the question alone",
+ "source": {
+  "name": "SelfAware: Yin et al., Do Large Language Models Know What They Don't Know? (Findings of ACL 2023), arXiv:2305.18153",
+  "url": "https://github.com/yinzhangyue/SelfAware",
+  "files": [
+   "https://raw.githubusercontent.com/yinzhangyue/SelfAware/f0bad1ff77bd42fc4eb2360281ed646c7bb7bd0c/data/SelfAware.json"
+  ],
+  "sha256": {
+   "data/SelfAware.json": "32929585ffdd4048f35f7f167720722eb8ddcf59908ffc958da2f84ea634dc54"
+  },
+  "split": "no split; the whole file (3,369 questions)",
+  "version": "commit f0bad1ff77bd42fc4eb2360281ed646c7bb7bd0c (2024-11-08)"
+ },
+ "licence": "data \"CC-BY-SA-4.0\" (README; field \"license\": \"cc-by-sa-4.0\" in the data file); code \"Apache License 2.0\"",
+ "redistribution": "items included (share-alike)",
+ "labels": "human",
+ "item_source": "public test set",
+ "metric": "accuracy",
+ "chance": 0.5,
+ "rows": 970,
+ "groups": null,
+ "question_type": "choice",
+ "options": 2,
+ "notes": "500 yes (answerable) + 500 no (unanswerable), sampled from 2,334 answerable and 1,032 unanswerable questions; dropped before sampling: 3 repeated rows, 0 rows with both labels. The label follows the origin of a question: the file's description says the unanswerable questions \"are sourced from knowledge-sharing platforms such as Quora and HowStuffWorks, while the answerable questions come from SQuAD, HotpotQA, and TriviaQA\" (answerable rows in the sample by source: hotpot_dev 3, hotpot_train 43, squadqa_dev 38, squadqa_train 281, triviaqa_dev 3, triviaqa_train 132). Answerable questions from SQuAD are shown without their paragraph and can be under-specified when read alone. The two classes differ in origin and style. The same description adds: \"The dataset is intended for research purposes only. For any commercial use, it is recommended to contact the author for permission\". Text unchanged (no row needed whitespace removal). Decontamination against the authors' training data (scan of 7 October 2026, 1,546,178 training records): 8 of 1000 items removed because a text field of the item occurs in it, and 4 more to restore the balance of the classes; 988 items remain. Decontamination against the training data of the final StartLux-Decision-27B (scan of 10 October 2026, 3,252,020 training records of Stage 1, Stage 2, Stage 3 and the RL pool): 12 of 988 items removed because a text field of the item occurs in it, and 6 more to restore the balance of the classes; 970 items remain.",
+ "track": "reference",
+ "version": "2",
+ "items_sha256": "bed6495c97b0f7af5c69bdcc79bd88a3065fcabb85245c1e9ea9fb2838c16069",
+ "group_kind": null,
+ "exposure": {
+  "ours": "not_named",
+  "base": "unknown",
+  "torchcast_27b": "unknown",
+  "jev_27b_at": "unknown",
+  "clef": "unknown",
+  "jev-1.13": "unknown",
+  "chat_model": "unknown",
+  "pplx_v11_27b": "not_named",
+  "kev_27b": "exposed",
+  "ours_final27": "not_named"
+ },
+ "build": {
+  "from": "v0/tasks/selfaware",
+  "source_items_sha256": "7c55e4d0d76b22919c60407efb739731c78271d620576cfce9c2ee262a4fcdbf",
+  "clean_ids_applied": true,
+  "note": null,
+  "v1_0_items_sha256": "7c55e4d0d76b22919c60407efb739731c78271d620576cfce9c2ee262a4fcdbf",
+  "same_items_as_v1_0": true,
+  "v1_2_items_sha256": "7c55e4d0d76b22919c60407efb739731c78271d620576cfce9c2ee262a4fcdbf",
+  "same_items_as_v1_2": false,
+  "cleaned_v1_3": "clean_seen_final27.py"
+ },
+ "accepts_items_sha256": [
+  "7c55e4d0d76b22919c60407efb739731c78271d620576cfce9c2ee262a4fcdbf"
+ ]
+}

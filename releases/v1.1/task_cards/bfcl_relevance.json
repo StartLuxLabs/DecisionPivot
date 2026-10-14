@@ -1,0 +1,50 @@
+{
+ "task": "bfcl_relevance",
+ "layer": "D",
+ "title": "BFCL relevance detection: does one of the listed functions apply to the request?",
+ "decision": "whether a user's request can be served by one of the listed functions (yes) or none of them applies (no)",
+ "source": {
+  "name": "Berkeley Function Calling Leaderboard (The Berkeley Function Calling Leaderboard (BFCL): From Tool Use to Agentic Evaluation of Large Language Models, ICML 2025)",
+  "url": "https://huggingface.co/datasets/gorilla-llm/Berkeley-Function-Calling-Leaderboard",
+  "files": [
+   "BFCL_v3_irrelevance.json",
+   "BFCL_v3_simple.json"
+  ],
+  "split": "single-turn test files: irrelevance (240 rows) and simple (400 rows)",
+  "version": "commit 61fc0608cfd831fcfbbaa676ebdfef0ed963eeda (last modified 2026-04-29), downloaded 2026-10-07"
+ },
+ "licence": "apache-2.0",
+ "redistribution": "items included",
+ "labels": "mixed: the label is the category of the file, assigned by the BFCL authors (irrelevance = no listed function applies; simple = one listed function applies, a ground-truth call exists); not reviewed row by row here",
+ "item_source": "public test set",
+ "metric": "accuracy",
+ "chance": 0.5,
+ "rows": 176,
+ "groups": null,
+ "question_type": "choice",
+ "options": 2,
+ "notes": "116 no (irrelevance: no listed function applies) + 116 yes (simple: one listed function applies). Pools before sampling: 240 irrelevance rows and 400 simple rows (rows with more than one turn or an empty function list dropped: 0 and 0); both sorted by id (digits as numbers). The classes differ in the length of the request (mean 51 characters for irrelevance, 84 for simple), so the rows are length-matched: buckets of (request length // 10, length of the JSON text of the function list // 100), the same number of rows per bucket and class, drawn with random.Random(20261007); 34 buckets used; mean request length in the sample 61 (no) and 62 (yes) characters. Buckets of 100 characters, as in the general rule, cannot remove the request-length cue (nine requests in ten are under 130 characters), hence the finer request bucket; the sample is therefore smaller than the 240 + 240 rows a plain draw would give. The final row order is shuffled with the same generator. Positives come from the `simple` file only: every irrelevance row lists exactly one function, so rows of `multiple` (two to four functions) would be separable by the number of functions; meta.n_functions is 1 for every row. state.request is the user turn of the file, state.functions the function definitions as given. The card defines the categories (irrelevance: none of the provided functions is relevant to the user query; simple: one function document and exactly one function call) but does not say how the individual requests were written (by hand, by a model or scraped) or how they were filtered, so a paper should state the label as 'category of the source file'. The V3 live categories (user-contributed requests with long function lists) and the other single-turn categories are not used. Decontamination against the authors' training data (scan of 7 October 2026, 1,546,178 training records): 52 of 232 items removed because a text field of the item occurs in it, and 4 more to restore the balance of the classes; 176 items remain.",
+ "track": "reference",
+ "version": "1",
+ "items_sha256": "7301decceff003f642016114c89819ddbcb0acd28ba0f865edaa030be427ea8b",
+ "group_kind": null,
+ "exposure": {
+  "ours": "exposed",
+  "base": "unknown",
+  "torchcast_27b": "unknown",
+  "jev_27b_at": "unknown",
+  "clef": "unknown",
+  "jev-1.13": "unknown",
+  "chat_model": "unknown",
+  "pplx_v11_27b": "not_named",
+  "kev_27b": "not_named"
+ },
+ "build": {
+  "from": "v0/tasks/bfcl_relevance",
+  "source_items_sha256": "7301decceff003f642016114c89819ddbcb0acd28ba0f865edaa030be427ea8b",
+  "clean_ids_applied": true,
+  "note": null,
+  "v1_0_items_sha256": "7301decceff003f642016114c89819ddbcb0acd28ba0f865edaa030be427ea8b",
+  "same_items_as_v1_0": true
+ }
+}

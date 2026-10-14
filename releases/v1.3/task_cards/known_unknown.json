@@ -1,0 +1,59 @@
+{
+ "task": "known_unknown",
+ "layer": "A",
+ "title": "Known or unknown question",
+ "decision": "whether a question has a definite, known answer (known) or not (unknown), judged from the question alone",
+ "source": {
+  "name": "Known-Unknown Questions (KUQ): Amayuelas et al., Knowledge of Knowledge (2023), arXiv:2305.13712",
+  "url": "https://huggingface.co/datasets/amayuelas/KUQ",
+  "files": [
+   "https://huggingface.co/datasets/amayuelas/KUQ/resolve/f99b53aa226dbb0d1b086db3ec352b0da0aa8f41/knowns_unknowns.jsonl"
+  ],
+  "sha256": {
+   "knowns_unknowns.jsonl": "798d1677f962d11d069f77d1e3db91ad2ddb483a94b697e46bc8ca62ad0aedf6"
+  },
+  "split": "no split; the whole main file (6,884 rows)",
+  "version": "commit f99b53aa226dbb0d1b086db3ec352b0da0aa8f41 (2025-02-26)"
+ },
+ "licence": "mit",
+ "redistribution": "items included",
+ "labels": "human",
+ "item_source": "public test set",
+ "metric": "accuracy",
+ "chance": 0.5,
+ "rows": 972,
+ "groups": null,
+ "question_type": "choice",
+ "options": 2,
+ "notes": "500 yes (known) + 500 no (unknown), sampled from 3,436 known and 2,481 unknown distinct questions; dropped before sampling: 964 repeated rows and 3 rows of a question that carries both labels. The label follows the origin of a question, not a check of each question: unknown questions were written by crowd workers (six categories, meta.category), known questions were taken from SQuAD, TriviaQA and HotpotQA (in the sample: hotpotqa 106, squad 272, triviaqa 122; unknown by category: ambiguous 84, controversial 96, counterfactual 80, false assumption 85, future unknown 96, unsolved problem 59). Known questions from SQuAD are shown without their paragraph and can be under-specified when read alone; some crowd-written questions are malformed. The two classes differ in origin and style. Text unchanged except leading/trailing whitespace (17 sampled rows, all known). The card states the licence mit for the whole file; the known questions come from sets with their own licences. Decontamination against the authors' training data (scan of 7 October 2026, 1,546,178 training records): 8 of 1000 items removed because a text field of the item occurs in it, and 8 more to restore the balance of the classes; 984 items remain. Decontamination against the training data of the final StartLux-Decision-27B (scan of 10 October 2026, 3,252,020 training records of Stage 1, Stage 2, Stage 3 and the RL pool): 12 of 984 items removed because a text field of the item occurs in it; 972 items remain.",
+ "track": "reference",
+ "version": "2",
+ "items_sha256": "86b6e1f0944a1eee545da128514e039f7b6ca6da116b75d6feecf167e63de260",
+ "group_kind": null,
+ "exposure": {
+  "ours": "not_named",
+  "base": "unknown",
+  "torchcast_27b": "unknown",
+  "jev_27b_at": "unknown",
+  "clef": "unknown",
+  "jev-1.13": "unknown",
+  "chat_model": "unknown",
+  "pplx_v11_27b": "not_named",
+  "kev_27b": "exposed",
+  "ours_final27": "not_named"
+ },
+ "build": {
+  "from": "v0/tasks/known_unknown",
+  "source_items_sha256": "731d33dfb7b2ce20dc73c0dd64b4bbf0b23037567675d37c1f9dfab51ff620e5",
+  "clean_ids_applied": true,
+  "note": null,
+  "v1_0_items_sha256": "731d33dfb7b2ce20dc73c0dd64b4bbf0b23037567675d37c1f9dfab51ff620e5",
+  "same_items_as_v1_0": true,
+  "v1_2_items_sha256": "731d33dfb7b2ce20dc73c0dd64b4bbf0b23037567675d37c1f9dfab51ff620e5",
+  "same_items_as_v1_2": false,
+  "cleaned_v1_3": "clean_seen_final27.py"
+ },
+ "accepts_items_sha256": [
+  "731d33dfb7b2ce20dc73c0dd64b4bbf0b23037567675d37c1f9dfab51ff620e5"
+ ]
+}

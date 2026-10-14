@@ -1,0 +1,24 @@
+# items and outputs never go into the repository (evaluation only; the items are on the Hugging Face dataset)
+/data/
+/data_v13/
+/generated/
+/runs/
+/results/
+*.jsonl
+!/tests/samples/tasks/*/items.jsonl
+
+# keys and local settings
+*.key
+.env
+.env.*
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# editors and systems
+.DS_Store
+.idea/
+.vscode/

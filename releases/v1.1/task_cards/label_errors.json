@@ -1,0 +1,58 @@
+{
+ "task": "label_errors",
+ "layer": "F",
+ "title": "Label errors in text data sets",
+ "decision": "whether the label that a public data set gives to a text is correct, as judged by five crowd workers",
+ "source": {
+  "name": "cleanlab/label-errors, Mechanical Turk study: Northcutt, Athalye, Mueller, Pervasive Label Errors in Test Sets Destabilize Machine Learning Benchmarks (NeurIPS 2021 Datasets and Benchmarks), arXiv:2103.14749",
+  "url": "https://github.com/cleanlab/label-errors",
+  "files": [
+   "https://raw.githubusercontent.com/cleanlab/label-errors/6d5d6b31a13216290afc40e5c6319399c4d15c06/mturk/imdb_mturk.json",
+   "https://raw.githubusercontent.com/cleanlab/label-errors/6d5d6b31a13216290afc40e5c6319399c4d15c06/mturk/amazon_mturk.json",
+   "https://raw.githubusercontent.com/cleanlab/label-errors/6d5d6b31a13216290afc40e5c6319399c4d15c06/mturk/20news_mturk.json",
+   "https://labelerrors.com/static/{imdb,amazon,20news}/<id>.txt (2,403 text files, one per annotation)"
+  ],
+  "sha256": {
+   "imdb_mturk.json": "80c15f04208276a4433b8f3d76405203487e38e95397709f762133fa10e82486",
+   "amazon_mturk.json": "24ddaa631c9b57dcfff0992a22ebfa497939f65b8c12e3facd7f37d431855946",
+   "20news_mturk.json": "0f14cda08aedfa79e883aaf6db43adfbf91b4affd5947cd832b7ccfb2d4dafc4",
+   "texts": "4071af763c26e691261e909e78dcb80f495a4da94b0672c16423a24c52b82d68"
+  },
+  "split": "examples flagged by confident learning in the IMDB test set (1,310 annotated), the 20 Newsgroups test set (93) and the Amazon Reviews set, which has no test split (1,000)",
+  "version": "annotations: commit 6d5d6b31a13216290afc40e5c6319399c4d15c06 (2025-12-16); texts: labelerrors.com, files dated 2020-12-09, downloaded 2026-10-07"
+ },
+ "licence": "annotations: \"Apache License 2.0\" (repository file LICENSE); the texts are IMDB reviews, Amazon reviews and 20 Newsgroups posts and keep the terms of those sources, which the repository does not state",
+ "redistribution": "rebuild script only",
+ "labels": "human",
+ "item_source": "public test set",
+ "metric": "accuracy",
+ "chance": 0.5,
+ "rows": 996,
+ "groups": null,
+ "question_type": "choice",
+ "options": 2,
+ "notes": "498 yes + 498 no: imdb 236 + 236; amazon 252 + 252; 20news 10 + 10. yes = at least 3 of the 5 workers chose the given label (the paper's non-errors), no = fewer than 3 did (the paper's errors: the workers chose the label guessed by confident learning, neutral, off-topic or neither label, and need not agree with one another). Rows before sampling (yes / no): imdb 585 / 725; amazon 268 / 731; 20news 11 / 40. Dropped: 40 20news rows in which votes for \"both labels apply\" decide the outcome (the paper counts them as errors), 3 texts over 20,000 characters. Sampling: equal numbers of yes and no in every (data set, given label) cell, at most 118 per cell and class, so that neither the data set nor the given label predicts the answer. 539 of the 996 rows rest on a 3-to-2 vote (meta.votes, meta.votes_for_given). All rows were first flagged by confident learning as likely label errors: a hard, selected subset, not a sample of the data sets. state.possible_labels lists the label names that occur in the annotation file of the data set. Texts unchanged except leading/trailing whitespace: IMDB reviews keep their <br /> tags, 20 Newsgroups posts keep their headers with the senders' names and e-mail addresses. The 1,310 IMDB texts are identical to rows of the test split of Hugging Face stanfordnlp/imdb with the same label (checked 2026-10-07, option --check-imdb); the Amazon and 20 Newsgroups texts were not compared with another copy.",
+ "track": "reference",
+ "version": "1",
+ "items_sha256": "e8cfd0f2cd3287e3d82f04bc806ff44c161a188d9076fa85627c0393f9b50398",
+ "group_kind": null,
+ "exposure": {
+  "ours": "not_named",
+  "base": "unknown",
+  "torchcast_27b": "unknown",
+  "jev_27b_at": "unknown",
+  "clef": "unknown",
+  "jev-1.13": "unknown",
+  "chat_model": "unknown",
+  "pplx_v11_27b": "exposed",
+  "kev_27b": "exposed"
+ },
+ "build": {
+  "from": "v0/tasks/label_errors",
+  "source_items_sha256": "e8cfd0f2cd3287e3d82f04bc806ff44c161a188d9076fa85627c0393f9b50398",
+  "clean_ids_applied": true,
+  "note": null,
+  "v1_0_items_sha256": "e8cfd0f2cd3287e3d82f04bc806ff44c161a188d9076fa85627c0393f9b50398",
+  "same_items_as_v1_0": true
+ }
+}

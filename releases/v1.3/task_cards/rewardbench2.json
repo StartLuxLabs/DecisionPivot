@@ -1,0 +1,56 @@
+{
+ "task": "rewardbench2",
+ "layer": "C",
+ "title": "RewardBench 2: which of four responses is the best?",
+ "decision": "which of four responses to a prompt is the best one (the response the data set marks as chosen)",
+ "source": {
+  "name": "RewardBench 2 (RewardBench 2: Advancing Reward Model Evaluation, arXiv:2506.01937)",
+  "url": "https://huggingface.co/datasets/allenai/reward-bench-2",
+  "files": [
+   "data/test-00000-of-00001.parquet"
+  ],
+  "split": "test (1,865 rows; 1,763 without the Ties subset)",
+  "version": "commit 7ff08853b0d5686e79b13fda8677024f566a104a (last modified 2025-06-04), downloaded 2026-10-07"
+ },
+ "licence": "odc-by; card: \"This dataset is licensed under ODC-BY. It is intended for research and educational use in accordance with Ai2's Responsible Use Guidelines. This dataset includes output data generated from third party models that are subject to separate terms governing their use.\"",
+ "redistribution": "items included",
+ "labels": "mixed: model completions; per the card they are filtered by several LLM judges (Factuality), verifier functions (Precise IF), majority voting (Math), an LLM judge with rubrics (Safety), and not filtered for Focus (completions made by varying the system prompt)",
+ "item_source": "public test set",
+ "metric": "accuracy",
+ "chance": 0.25,
+ "rows": 953,
+ "groups": null,
+ "question_type": "choice",
+ "options": 4,
+ "notes": "The 102 rows of the Ties subset (several correct responses) are excluded. 1000 of the other 1,763 rows, sampled per subset in proportion to its size with random.Random(20261007) after sorting by id: Factuality 269 of 475, Focus 281 of 495, Math 104 of 183, Precise IF 91 of 160, Safety 255 of 450. Gold A 250, B 250, C 250, D 250: the order of the four responses was drawn per row with the same generator so that the chosen one takes each place in a quarter of the rows of each subset; meta.order names the source field shown at each place (chosen[0], rejected[0..2]). The id of the file repeats across subsets, so item ids carry the subset. meta.models is copied from the file (card: the models of the chosen and the rejected responses, in that order). All responses are model-written; the prompts are human-written except Safety, whose prompts come from CoCoNot (card). In 2 sampled rows two of the rejected responses are identical. Decontamination against the authors' training data (scan of 7 October 2026, 1,546,178 training records): 20 of 1000 items removed because a text field of the item occurs in it; 980 items remain. Decontamination against the training data of the final StartLux-Decision-27B (scan of 10 October 2026, 3,252,020 training records of Stage 1, Stage 2, Stage 3 and the RL pool): 27 of 980 items removed because a text field of the item occurs in it; 953 items remain.",
+ "track": "reference",
+ "version": "2",
+ "items_sha256": "cc87c26b162df35d37a7e0d2bad33977dafa75a91fa48cbfce77c483414d6693",
+ "group_kind": null,
+ "exposure": {
+  "ours": "not_named",
+  "base": "unknown",
+  "torchcast_27b": "unknown",
+  "jev_27b_at": "unknown",
+  "clef": "unknown",
+  "jev-1.13": "unknown",
+  "chat_model": "unknown",
+  "pplx_v11_27b": "exposed",
+  "kev_27b": "not_named",
+  "ours_final27": "exposed"
+ },
+ "build": {
+  "from": "v0/tasks/rewardbench2",
+  "source_items_sha256": "a9e0c136de7e3be0f776c4d2325bc940458e1e7a8187369b40f75aabcc81fa91",
+  "clean_ids_applied": true,
+  "note": null,
+  "v1_0_items_sha256": "a9e0c136de7e3be0f776c4d2325bc940458e1e7a8187369b40f75aabcc81fa91",
+  "same_items_as_v1_0": true,
+  "v1_2_items_sha256": "a9e0c136de7e3be0f776c4d2325bc940458e1e7a8187369b40f75aabcc81fa91",
+  "same_items_as_v1_2": false,
+  "cleaned_v1_3": "clean_seen_final27.py"
+ },
+ "accepts_items_sha256": [
+  "a9e0c136de7e3be0f776c4d2325bc940458e1e7a8187369b40f75aabcc81fa91"
+ ]
+}

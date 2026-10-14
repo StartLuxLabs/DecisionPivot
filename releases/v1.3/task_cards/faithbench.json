@@ -1,0 +1,71 @@
+{
+ "task": "faithbench",
+ "layer": "C",
+ "title": "FaithBench: is the summary faithful to the source text?",
+ "decision": "whether an LLM-written summary is faithful to its source text (yes) or contains a hallucination that experts marked as unwanted (no)",
+ "source": {
+  "name": "FaithBench (FaithBench: A Diverse Hallucination Benchmark for Summarization by Modern LLMs, NAACL 2025, arXiv:2410.13210)",
+  "url": "https://github.com/vectara/FaithBench",
+  "files": [
+   "FaithBench.csv",
+   "data_for_release/batch_1.json",
+   "data_for_release/batch_10.json",
+   "data_for_release/batch_11.json",
+   "data_for_release/batch_12.json",
+   "data_for_release/batch_14.json",
+   "data_for_release/batch_15.json",
+   "data_for_release/batch_16.json",
+   "data_for_release/batch_2.json",
+   "data_for_release/batch_3.json",
+   "data_for_release/batch_4.json",
+   "data_for_release/batch_5.json",
+   "data_for_release/batch_6.json",
+   "data_for_release/batch_7.json",
+   "data_for_release/batch_8.json",
+   "data_for_release/batch_9.json"
+  ],
+  "split": "released batches 1-12 and 14-16 (750 summaries; the README lists no batch 13)",
+  "version": "commit cf89797d82812c23b5d5e5c121f1d9b8983bbbce (2025-05-12), downloaded 2026-10-07"
+ },
+ "licence": "Attribution-NonCommercial-ShareAlike 4.0 International (file LICENSE of the repository)",
+ "redistribution": "rebuild script only",
+ "labels": "human",
+ "item_source": "public test set",
+ "metric": "accuracy",
+ "chance": 0.5,
+ "rows": 298,
+ "groups": null,
+ "question_type": "choice",
+ "options": 2,
+ "notes": "164 yes + 164 no, from 750 released summaries (10 LLMs, 75 each). LABEL RULE (the README gives a taxonomy and no aggregation rule; its script is not usable as a rule: it returns 0 both for a summary without annotations and for a hallucinated one): yes = the summary has no annotation (README: Consistent, no annotations needed): 175 summaries; no = at least two different annotators left annotations and each of them marked a span Unwanted (intrinsic or extrinsic): 235 summaries. Dropped as in between: 140 (annotators disagree (Unwanted by some, not by all)); 136 (only Benign or Questionable spans); 64 (one annotator only (Unwanted)). The files do not say how many experts looked at a summary (an expert who finds nothing leaves no annotation), so 'the majority of the experts' cannot be computed; unanimity of the annotators on record is used instead. The repository's FaithBench.csv, which the README does not describe, has a worst and a best label per summary (kept in meta.file_worst_label / file_best_label); in 38 of the 164 rows labelled no its best label is Consistent, i.e. another annotator found nothing, so these are 'unwanted' for the annotators on record and contested overall; yes rows with a different file label: 0. LENGTH MATCHING: hallucinated summaries are longer (and come from longer sources); a plain balanced draw has best single length thresholds of 0.591 (summary) and 0.597 (source). The rows were put in buckets of the summary length (100 characters) and the same number was drawn from both classes in every bucket (random.Random(20261007); all matched pairs, so fewer than the 175 + 175 possible); thresholds in the sample: summary 0.521, source 0.549; mean summary length 510 (yes) and 514 (no) characters. Rows by summarising model (yes/no): GPT-3.5-Turbo 26/11, Meta-Llama-3.1-70B-Instruct 21/10, Meta-Llama-3.1-8B-Instruct 16/17, Mistral-7B-Instruct-v0.3 13/19, Phi-3-mini-4k-instruct 11/28, Qwen2.5-7B-Instruct 11/25, claude-3-5-sonnet-20240620 12/13, command-r-08-2024 8/17, gemini-1.5-flash-001 23/19, gpt-4o 23/5. The summaries were written by the ten LLMs (meta.summarizer), the labels by the human annotators; the samples were chosen by the authors among instances on which popular hallucination detectors disagreed (abstract of arXiv:2410.13210), so they are harder than random summaries, and the annotators often disagree (see the dropped groups). state = {source, summary} as in the files; meta.batch and meta.sample_id identify the row in data_for_release/batch_<n>.json. Decontamination against the authors' training data (scan of 7 October 2026, 1,546,178 training records): 13 of 328 items removed because a text field of the item occurs in it, and 11 more to restore the balance of the classes; 304 items remain. Decontamination against the training data of the final StartLux-Decision-27B (scan of 10 October 2026, 3,252,020 training records of Stage 1, Stage 2, Stage 3 and the RL pool): 5 of 304 items removed because a text field of the item occurs in it, and 1 more to restore the balance of the classes; 298 items remain.",
+ "track": "reference",
+ "version": "2",
+ "items_sha256": "c7b7427ebfdcf694324f8a717fc958c7bff08118694d54943d99abc93aa99d7c",
+ "group_kind": null,
+ "exposure": {
+  "ours": "exposed",
+  "base": "unknown",
+  "torchcast_27b": "unknown",
+  "jev_27b_at": "unknown",
+  "clef": "unknown",
+  "jev-1.13": "unknown",
+  "chat_model": "unknown",
+  "pplx_v11_27b": "not_named",
+  "kev_27b": "not_named",
+  "ours_final27": "exposed"
+ },
+ "build": {
+  "from": "v0/tasks/faithbench",
+  "source_items_sha256": "4b6297076d5d9194b786a45d711390351299bc8ccd13eda8222b6bf1434c10ba",
+  "clean_ids_applied": true,
+  "note": null,
+  "v1_0_items_sha256": "4b6297076d5d9194b786a45d711390351299bc8ccd13eda8222b6bf1434c10ba",
+  "same_items_as_v1_0": true,
+  "v1_2_items_sha256": "4b6297076d5d9194b786a45d711390351299bc8ccd13eda8222b6bf1434c10ba",
+  "same_items_as_v1_2": false,
+  "cleaned_v1_3": "clean_seen_final27.py"
+ },
+ "accepts_items_sha256": [
+  "4b6297076d5d9194b786a45d711390351299bc8ccd13eda8222b6bf1434c10ba"
+ ]
+}

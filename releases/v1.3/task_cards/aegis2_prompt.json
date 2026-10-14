@@ -1,0 +1,56 @@
+{
+ "task": "aegis2_prompt",
+ "layer": "B",
+ "title": "Prompt safety (AEGIS 2.0 test prompts)",
+ "decision": "whether a user prompt to an AI assistant is unsafe (the data set's human prompt label)",
+ "source": {
+  "name": "AEGIS 2.0 / Nemotron Content Safety Dataset V2 (Ghosh et al., NAACL 2025)",
+  "url": "https://huggingface.co/datasets/nvidia/Aegis-AI-Content-Safety-Dataset-2.0",
+  "files": [
+   "test.json"
+  ],
+  "split": "test",
+  "version": "commit d86bb8bedff51d25ac834ab7838f1cc61acb7a2c (2025-06-09)"
+ },
+ "licence": "cc-by-4.0",
+ "redistribution": "items included",
+ "labels": "human",
+ "item_source": "public test set",
+ "metric": "accuracy",
+ "chance": 0.5,
+ "rows": 836,
+ "groups": null,
+ "question_type": "choice",
+ "options": 2,
+ "notes": "gold yes = prompt_label 'unsafe', no = 'safe'; rows: 500 yes + 500 no. Test split: 1964 rows. Dropped: 36 redacted prompts (text 'REDACTED', to be rebuilt from a set the card does not distribute; 16 safe, 20 unsafe), 0 blank prompts, 12 repeats of 12 prompt texts that occur more than once with one label (lowest id kept) and 2 rows of 1 prompt text(s) that carry both labels (texts compared after case folding and collapsing white space). Pool after filtering: 884 safe, 1030 unsafe; 500 per class drawn with random.Random(20261007) after sorting by id. Label caveat: prompt_label_source is 'human' for every row, and the card describes the human label as an overall safety label for the conversation; 852 of the 1964 test rows also have a model response (meta.has_response; 242 yes and 195 no rows here), which is not shown in the state. meta.violated_categories is the data set's category list. The prompts contain harmful and offensive text. Decontamination against the authors' training data (scan of 7 October 2026, 1,546,178 training records): 34 of 1000 items removed because a text field of the item occurs in it, and 12 more to restore the balance of the classes; 954 items remain. Decontamination against the training data of the final StartLux-Decision-27B (scan of 10 October 2026, 3,252,020 training records of Stage 1, Stage 2, Stage 3 and the RL pool): 108 of 954 items removed because a text field of the item occurs in it, and 10 more to restore the balance of the classes; 836 items remain.",
+ "track": "reference",
+ "version": "2",
+ "items_sha256": "dc5f9acd81e930dc90797d4f6bb393b0007b64be5ef2da5cf6181b6d36560e1c",
+ "group_kind": null,
+ "exposure": {
+  "ours": "exposed",
+  "base": "unknown",
+  "torchcast_27b": "unknown",
+  "jev_27b_at": "unknown",
+  "clef": "unknown",
+  "jev-1.13": "unknown",
+  "chat_model": "unknown",
+  "pplx_v11_27b": "exposed",
+  "kev_27b": "exposed",
+  "ours_final27": "exposed"
+ },
+ "build": {
+  "from": "v0/tasks/aegis2_prompt",
+  "source_items_sha256": "c7b6e8fa9c721f9800995d9be4055922e302ea2cf3157071361bc0a896174a5c",
+  "clean_ids_applied": true,
+  "note": null,
+  "v1_0_items_sha256": "c7b6e8fa9c721f9800995d9be4055922e302ea2cf3157071361bc0a896174a5c",
+  "same_items_as_v1_0": true,
+  "v1_2_items_sha256": "c7b6e8fa9c721f9800995d9be4055922e302ea2cf3157071361bc0a896174a5c",
+  "same_items_as_v1_2": false,
+  "cleaned_v1_3": "clean_seen_final27.py"
+ },
+ "accepts_items_sha256": [
+  "c7b6e8fa9c721f9800995d9be4055922e302ea2cf3157071361bc0a896174a5c"
+ ]
+}

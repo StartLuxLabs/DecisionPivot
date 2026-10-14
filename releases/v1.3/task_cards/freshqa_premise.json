@@ -1,0 +1,59 @@
+{
+ "task": "freshqa_premise",
+ "layer": "A",
+ "title": "Question with a false premise",
+ "decision": "whether a question rests on a false premise, judged from the question alone at the date of the snapshot",
+ "source": {
+  "name": "FreshQA: Vu et al., FreshLLMs: Refreshing Large Language Models with Search Engine Augmentation (2023), arXiv:2310.03214",
+  "url": "https://github.com/freshllms/freshqa",
+  "files": [
+   "https://docs.google.com/spreadsheets/d/1_8mi-yuK30mvoDJu1KQXD6ODem7MKMcIgVAwDSzJkjM/export?format=csv&gid=334049794"
+  ],
+  "sha256": {
+   "FreshQA_v042126-freshqa.csv": "3769244f66bb2666fe5160c8cc235339b7c54c61fc88d360995aa91d4c904789"
+  },
+  "split": "TEST (500 of 600 questions; the other 100 are DEV)",
+  "version": "sheet \"FreshQA April 21, 2026\" (file name FreshQA_v042126-freshqa.csv), linked from the README at commit 7d2d3683991916f3633e480548a6aa5c9a62e3db (2026-05-01); exported 2026-10-07"
+ },
+ "licence": "repository \"Apache License 2.0\" (file LICENSE); the question sheet is a Google Sheet linked from the README and carries no licence statement of its own",
+ "redistribution": "rebuild script only",
+ "labels": "human",
+ "item_source": "public test set",
+ "metric": "auroc",
+ "chance": 0.5,
+ "rows": 495,
+ "groups": null,
+ "question_type": "choice",
+ "options": 2,
+ "notes": "Classes as they are: 124 yes (false_premise TRUE) + 376 no (FALSE); no sampling. The flag describes the world at the date of the snapshot, so the question sentence names that date; the authors revise questions, flags and answers, and other snapshots differ (false-premise questions by fact_type in this one: fast-changing 2, never-changing 63, slow-changing 59; meta keeps fact_type, num_hops, effective_year). Redistribution is set to the rebuild script because the Apache licence is stated for the repository and the questions are not in the repository. The file opens with a notice of the authors: \"Warning: Please do not click thumbs up/down when trying these examples on any model's web interface, as the data will be used for training future versions of those models.\" Text unchanged except leading/trailing whitespace (6 rows). Decontamination against the authors' training data (scan of 7 October 2026, 1,546,178 training records): 2 of 500 items removed because a text field of the item occurs in it; 498 items remain. Decontamination against the training data of the final StartLux-Decision-27B (scan of 10 October 2026, 3,252,020 training records of Stage 1, Stage 2, Stage 3 and the RL pool): 3 of 498 items removed because a text field of the item occurs in it; 495 items remain.",
+ "track": "reference",
+ "version": "2",
+ "items_sha256": "57a9417595267b634f7355fa6b85ad9ccff730506df3dadfad6bf0b0a645b427",
+ "group_kind": null,
+ "exposure": {
+  "ours": "not_named",
+  "base": "unknown",
+  "torchcast_27b": "unknown",
+  "jev_27b_at": "unknown",
+  "clef": "unknown",
+  "jev-1.13": "unknown",
+  "chat_model": "unknown",
+  "pplx_v11_27b": "not_named",
+  "kev_27b": "not_named",
+  "ours_final27": "not_named"
+ },
+ "build": {
+  "from": "v0/tasks/freshqa_premise",
+  "source_items_sha256": "540f86386292270cf09694a6022bee329d14912e5481aa742e957f25f00a7715",
+  "clean_ids_applied": true,
+  "note": null,
+  "v1_0_items_sha256": "540f86386292270cf09694a6022bee329d14912e5481aa742e957f25f00a7715",
+  "same_items_as_v1_0": true,
+  "v1_2_items_sha256": "540f86386292270cf09694a6022bee329d14912e5481aa742e957f25f00a7715",
+  "same_items_as_v1_2": false,
+  "cleaned_v1_3": "clean_seen_final27.py"
+ },
+ "accepts_items_sha256": [
+  "540f86386292270cf09694a6022bee329d14912e5481aa742e957f25f00a7715"
+ ]
+}

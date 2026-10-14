@@ -1,0 +1,52 @@
+{
+ "task": "processbench",
+ "layer": "C",
+ "title": "ProcessBench: which step of a solution contains the first error?",
+ "decision": "which step of a step-by-step solution to a mathematics problem contains the first error, or that the solution contains no error",
+ "source": {
+  "name": "ProcessBench (ProcessBench: Identifying Process Errors in Mathematical Reasoning, arXiv:2412.06559)",
+  "url": "https://huggingface.co/datasets/Qwen/ProcessBench",
+  "files": [
+   "gsm8k.json",
+   "math.json",
+   "olympiadbench.json",
+   "omnimath.json"
+  ],
+  "split": "gsm8k (400 cases, 193 without error), math (1,000 cases, 406 without error), olympiadbench (1,000 cases, 339 without error), omnimath (1,000 cases, 241 without error)",
+  "version": "commit 3bdcd5371ed567559a78f559c01c13a6deee7604 (last modified 2024-12-27), downloaded 2026-10-07"
+ },
+ "licence": "apache-2.0",
+ "redistribution": "items included",
+ "labels": "human",
+ "item_source": "public test set",
+ "metric": "accuracy",
+ "chance": 0.1419,
+ "rows": 966,
+ "groups": null,
+ "question_type": "choice",
+ "options": 33,
+ "notes": "The number of options differs per row: one per step, keyed by the step index of the data (from 0, the keys of state.steps), plus `none`; `options` is the maximum (minimum 3, median 7; 4 rows have more than 26) and `chance` is the mean of 1 / options over the rows. Sampled per subset with random.Random(20261007) after sorting by id, keeping each subset's share of error-free solutions (label -1): gsm8k 250 rows with 121 `none`, math 250 rows with 102 `none`, olympiadbench 250 rows with 85 `none`, omnimath 250 rows with 60 `none`; gold `none` in 368 of 1000 rows, so always answering `none` scores 0.368. In 132 rows the final answer is correct although a step is wrong (meta.final_answer_correct). The solutions are model-written (meta.generator: Llama-3.1-70B-Instruct 88, Llama-3.1-8B-Instruct 150, Meta-Llama-3-70B-Instruct 53, Meta-Llama-3-8B-Instruct 39, Qwen2-1.5B-Instruct 34, Qwen2-72B-Instruct 91, Qwen2-7B-Instruct 120, Qwen2.5-1.5B-Instruct 43, Qwen2.5-72B-Instruct 74, Qwen2.5-7B-Instruct 108, Qwen2.5-Math-72B-Instruct 79, Qwen2.5-Math-7B-Instruct 121); the error positions are human labels. The licence recorded here is that of the ProcessBench card; the licences of the problem sources named by the subsets were not checked. Decontamination against the authors' training data (scan of 7 October 2026, 1,546,178 training records): 34 of 1000 items removed because a text field of the item occurs in it; 966 items remain.",
+ "track": "reference",
+ "version": "1",
+ "items_sha256": "4fd9dfc00ac6bf6567b43a8baa816e6a081094654691626b8b8eb0cfbc549ff6",
+ "group_kind": null,
+ "exposure": {
+  "ours": "exposed",
+  "base": "unknown",
+  "torchcast_27b": "unknown",
+  "jev_27b_at": "unknown",
+  "clef": "unknown",
+  "jev-1.13": "unknown",
+  "chat_model": "unknown",
+  "pplx_v11_27b": "exposed",
+  "kev_27b": "exposed"
+ },
+ "build": {
+  "from": "v0/tasks/processbench",
+  "source_items_sha256": "4fd9dfc00ac6bf6567b43a8baa816e6a081094654691626b8b8eb0cfbc549ff6",
+  "clean_ids_applied": true,
+  "note": null,
+  "v1_0_items_sha256": "4fd9dfc00ac6bf6567b43a8baa816e6a081094654691626b8b8eb0cfbc549ff6",
+  "same_items_as_v1_0": true
+ }
+}

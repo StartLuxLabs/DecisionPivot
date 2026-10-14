@@ -1,0 +1,49 @@
+{
+ "task": "primevul_pair",
+ "layer": "E",
+ "title": "PrimeVul paired functions: a vulnerable function and its patch",
+ "decision": "whether a C/C++ function contains a security vulnerability (asked for the vulnerable and for the patched version of the same function)",
+ "source": {
+  "name": "PrimeVul: Vulnerability Detection with Code Language Models: How Far Are We? (ICSE 2025, arXiv:2403.18624)",
+  "url": "https://github.com/DLVulDet/PrimeVul",
+  "files": [
+   "primevul_test_paired.jsonl (README link \"Original Release\": Google Drive folder 19iLaNDS0z99N8kB_jBRTmDLehwZBolMY, file 1rNDKb65Yn1rCBURzHeBcH4jVVdQ1oD4r, sha256 54a16a5ab663d11d1ffa5f48a98b0f996e82ee85f48a2b999334f6c1a7d96e41)"
+  ],
+  "split": "paired test, original release (564 pairs = 1,128 functions)",
+  "version": "README at commit 6f54687c84947b1d17486495440b37030d147289; file downloaded 2026-10-07"
+ },
+ "licence": "MIT License",
+ "redistribution": "items included",
+ "labels": "programmatic",
+ "item_source": "public test set",
+ "metric": "pair_accuracy",
+ "chance": 0.25,
+ "rows": 1000,
+ "groups": 500,
+ "question_type": "choice",
+ "options": 2,
+ "notes": "564 pairs in the file (the paired test set of the paper); 54 pairs with a function longer than 12,000 characters dropped, 510 left, 500 sampled (seed 20261007). Two rows per pair with a shared group: the function before the security fix (gold yes) and the same function after it (gold no); a group counts only if both rows are right, so one answer for every row scores 0 and independent guessing scores 0.25. Labels are automatic (functions changed by vulnerability-fixing commits): no means that the known flaw was fixed, not that the function was audited. 2 patched functions (source idx 349259, 439495) are listed by the source in two pairs each and both pairs were sampled: these rows occur twice, under separate ids and groups. The repository also offers a re-release v0.1 with CVE metadata whose paired test set has 435 pairs (870 rows, the size listed in datasets_verified.md from a third-party copy); it is not used here. The functions are C/C++ code from open-source projects (Linux, TensorFlow, vim, ...), which keep their own licences; the data set itself is released under the MIT License.",
+ "track": "reference",
+ "version": "1",
+ "items_sha256": "555b54b06c62e47c9dca19179b2ae53633304125726a24c3696e3ac221662c35",
+ "group_kind": "contrast",
+ "exposure": {
+  "ours": "not_named",
+  "base": "unknown",
+  "torchcast_27b": "unknown",
+  "jev_27b_at": "unknown",
+  "clef": "unknown",
+  "jev-1.13": "unknown",
+  "chat_model": "unknown",
+  "pplx_v11_27b": "not_named",
+  "kev_27b": "not_named"
+ },
+ "build": {
+  "from": "v0/tasks/primevul_pair",
+  "source_items_sha256": "555b54b06c62e47c9dca19179b2ae53633304125726a24c3696e3ac221662c35",
+  "clean_ids_applied": true,
+  "note": null,
+  "v1_0_items_sha256": "555b54b06c62e47c9dca19179b2ae53633304125726a24c3696e3ac221662c35",
+  "same_items_as_v1_0": true
+ }
+}

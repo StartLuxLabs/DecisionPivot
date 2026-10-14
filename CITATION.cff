@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use DecisionPivot, please cite it as below."
+title: "DecisionPivot: A Diagnostic Benchmark for Decision Models in LLM Systems"
+authors:
+  - name: "StartLux Labs"
+type: software
+repository-code: "https://github.com/StartLuxLabs/DecisionPivot"
+license: Apache-2.0
+version: "1.3"
+date-released: "2026-10-11"
+preferred-citation:
+  type: article
+  title: "DecisionPivot: A Diagnostic Benchmark for Decision Models in LLM Systems"
+  authors:
+    - name: "StartLux Labs"
+  year: 2026

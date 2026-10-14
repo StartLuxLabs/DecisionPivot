@@ -1,0 +1,50 @@
+{
+ "task": "judgebench",
+ "layer": "C",
+ "title": "JudgeBench: which of two responses is correct?",
+ "decision": "which of two responses to a question is the correct one (objective correctness label of the data set)",
+ "source": {
+  "name": "JudgeBench (JudgeBench: A Benchmark for Evaluating LLM-based Judges, arXiv:2410.12784)",
+  "url": "https://huggingface.co/datasets/ScalerLab/JudgeBench",
+  "files": [
+   "data/gpt-00000-of-00001.jsonl",
+   "data/claude-00000-of-00001.jsonl"
+  ],
+  "split": "gpt (350 pairs) and claude (270 pairs)",
+  "version": "commit 57dd5e0b9817d07f05ec8f45a91b2ce1e310e308 (last modified 2024-10-09), downloaded 2026-10-07"
+ },
+ "licence": "mit",
+ "redistribution": "items included",
+ "labels": "programmatic",
+ "item_source": "public test set",
+ "metric": "accuracy",
+ "chance": 0.5,
+ "rows": 619,
+ "groups": null,
+ "question_type": "choice",
+ "options": 2,
+ "notes": "All usable pairs of both splits (620 in the files; no sampling). Dropped: 0 (label is not a strict preference); 0 (a response longer than 12,000 characters); 1 (the two responses are identical). Gold A 310, B 309 (gpt: 175 / 175; claude: 135 / 134): the order of the two responses was drawn anew per row with random.Random(20261007) so that the correct one is first in half of the rows of each split; meta.order names the source fields shown as response A and B, meta.source_label is the label of the file. Rows by origin of the question (meta.source; the 14 mmlu-pro subjects together): livebench-math 90, livebench-reasoning 149, livecodebench 72, mmlu-pro 308. Both responses of a pair are written by the same model (meta.response_model: gpt-4o-2024-05-13 in split gpt, claude-3-5-sonnet-20240620 in split claude); correctness comes from the scoring of the source sets, not from human judges of the responses; several pairs can share one question. The licence recorded here is that of the JudgeBench card; the licences of the sets the questions come from (meta.source) were not checked.",
+ "track": "reference",
+ "version": "1",
+ "items_sha256": "3c98b2f0f606bbdd874350507ab39d066df667e742eb2eb24a590fa6eb17434b",
+ "group_kind": null,
+ "exposure": {
+  "ours": "not_named",
+  "base": "unknown",
+  "torchcast_27b": "unknown",
+  "jev_27b_at": "unknown",
+  "clef": "unknown",
+  "jev-1.13": "unknown",
+  "chat_model": "unknown",
+  "pplx_v11_27b": "not_named",
+  "kev_27b": "not_named"
+ },
+ "build": {
+  "from": "v0/tasks/judgebench",
+  "source_items_sha256": "3c98b2f0f606bbdd874350507ab39d066df667e742eb2eb24a590fa6eb17434b",
+  "clean_ids_applied": true,
+  "note": null,
+  "v1_0_items_sha256": "3c98b2f0f606bbdd874350507ab39d066df667e742eb2eb24a590fa6eb17434b",
+  "same_items_as_v1_0": true
+ }
+}

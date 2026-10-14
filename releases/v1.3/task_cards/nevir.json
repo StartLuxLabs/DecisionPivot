@@ -1,0 +1,56 @@
+{
+ "task": "nevir",
+ "layer": "G",
+ "title": "NevIR: relevance under negation (paired queries and documents)",
+ "decision": "which of two documents that differ by a negation is relevant to a query",
+ "source": {
+  "name": "NevIR: Negation in Neural Information Retrieval (arXiv:2305.07614)",
+  "url": "https://huggingface.co/datasets/orionweller/NevIR",
+  "files": [
+   "test.jsonl"
+  ],
+  "split": "test (1,383 instances)",
+  "version": "commit 6263585072ce3b435ed09658613553fbf4e74184 (2023-05-26)"
+ },
+ "licence": "mit",
+ "redistribution": "items included",
+ "labels": "human",
+ "item_source": "public test set",
+ "metric": "pair_accuracy",
+ "chance": 0.25,
+ "rows": 998,
+ "groups": 499,
+ "question_type": "choice",
+ "options": 2,
+ "notes": "500 of the 1,383 test instances (seed 20261007), drawn after dropping 1 instance whose two queries are the same string (1314-2); two rows each: the row for q1 has gold A, the row for q2 has gold B; a group counts only if both rows are right, so answering A (or B) on every row scores 0 and independent guessing scores 0.25. Document order is the order of the data in both rows of a group: A = doc1 (the original passage), B = doc2 (the edited passage); the position of the original is therefore constant and a row-level accuracy is not meaningful without the pairing. Queries were written by crowd workers; the documents come from CondaQA. A small training split (948 instances) is public. Decontamination against the training data of the final StartLux-Decision-27B (scan of 10 October 2026, 3,252,020 training records of Stage 1, Stage 2, Stage 3 and the RL pool): 2 of 1000 items removed because a text field of the item occurs in it; 998 items remain.",
+ "track": "reference",
+ "version": "2",
+ "items_sha256": "6f70829b62c47a35aa24c06a33b12a5421b80b7c92b05e9d94ad99d52cbc545d",
+ "group_kind": "contrast",
+ "exposure": {
+  "ours": "not_named",
+  "base": "unknown",
+  "torchcast_27b": "unknown",
+  "jev_27b_at": "unknown",
+  "clef": "unknown",
+  "jev-1.13": "unknown",
+  "chat_model": "unknown",
+  "pplx_v11_27b": "exposed",
+  "kev_27b": "not_named",
+  "ours_final27": "not_named"
+ },
+ "build": {
+  "from": "v0/tasks/nevir",
+  "source_items_sha256": "8f1404a539d4be8668b178c7a84055af2041e9a9c34fcd27f85db67918e60cc7",
+  "clean_ids_applied": true,
+  "note": null,
+  "v1_0_items_sha256": "8f1404a539d4be8668b178c7a84055af2041e9a9c34fcd27f85db67918e60cc7",
+  "same_items_as_v1_0": true,
+  "v1_2_items_sha256": "8f1404a539d4be8668b178c7a84055af2041e9a9c34fcd27f85db67918e60cc7",
+  "same_items_as_v1_2": false,
+  "cleaned_v1_3": "clean_seen_final27.py"
+ },
+ "accepts_items_sha256": [
+  "8f1404a539d4be8668b178c7a84055af2041e9a9c34fcd27f85db67918e60cc7"
+ ]
+}

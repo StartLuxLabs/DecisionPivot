@@ -1,0 +1,56 @@
+{
+ "task": "cap_boundary_card",
+ "layer": "A",
+ "title": "Capability boundary from a model card",
+ "decision": "whether a given public chat model will answer a given question correctly (asked before the model is called)",
+ "source": {
+  "name": "stored sampled answers of four public chat models on evaluation-only question sets (own runs)",
+  "url": "",
+  "files": [
+   "capb_items.jsonl"
+  ],
+  "split": "evaluation questions of NQ, PopQA, WebQuestions, TriviaQA; BBH tasks, StrategyQA, FOLIO, ProofWriter, DROP; SVAMP, ASDiv, GSM-Hard, GSM-Plus, MAWPS",
+  "version": "2026-10-06"
+ },
+ "licence": "labels: own; question texts keep the licences of their sources [[to be listed per source]]",
+ "redistribution": "rebuild script only",
+ "labels": "programmatic",
+ "item_source": "new labels on public inputs",
+ "metric": "mse_soft",
+ "chance": null,
+ "rows": 911,
+ "groups": null,
+ "question_type": "choice",
+ "options": 2,
+ "notes": "soft.yes = k / n correct among n sampled answers (meta.n, meta.k); the state holds the model's name and size only Decontamination against the authors' training data (scan of 7 October 2026, 1,546,178 training records): 78 of 990 items removed because a text field of the item occurs in it; 912 items remain. Decontamination against the training data of the final StartLux-Decision-27B (scan of 10 October 2026, 3,252,020 training records of Stage 1, Stage 2, Stage 3 and the RL pool): 1 of 912 items removed because a text field of the item occurs in it; 911 items remain.",
+ "track": "reference",
+ "version": "2",
+ "items_sha256": "5640cf7c95fb61a930e519d9ec70eec562a1d889a3b88b947b5c51e36e9b5ab6",
+ "group_kind": null,
+ "exposure": {
+  "ours": "exposed",
+  "base": "unknown",
+  "torchcast_27b": "unknown",
+  "jev_27b_at": "unknown",
+  "clef": "unknown",
+  "jev-1.13": "unknown",
+  "chat_model": "unknown",
+  "pplx_v11_27b": "exposed",
+  "kev_27b": "exposed",
+  "ours_final27": "exposed"
+ },
+ "build": {
+  "from": "v0/tasks/cap_boundary_card",
+  "source_items_sha256": "9064cf3b0fc59100d72499ecea293533d6352eb2dd163ca1cd2f4b7110219ec0",
+  "clean_ids_applied": true,
+  "note": null,
+  "v1_0_items_sha256": "9064cf3b0fc59100d72499ecea293533d6352eb2dd163ca1cd2f4b7110219ec0",
+  "same_items_as_v1_0": true,
+  "v1_2_items_sha256": "9064cf3b0fc59100d72499ecea293533d6352eb2dd163ca1cd2f4b7110219ec0",
+  "same_items_as_v1_2": false,
+  "cleaned_v1_3": "clean_seen_final27.py"
+ },
+ "accepts_items_sha256": [
+  "9064cf3b0fc59100d72499ecea293533d6352eb2dd163ca1cd2f4b7110219ec0"
+ ]
+}

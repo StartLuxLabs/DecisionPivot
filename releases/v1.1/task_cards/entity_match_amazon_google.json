@@ -1,0 +1,49 @@
+{
+ "task": "entity_match_amazon_google",
+ "layer": "G",
+ "title": "Amazon-Google product matching (DeepMatcher test split)",
+ "decision": "whether two product records from two shops describe the same product",
+ "source": {
+  "name": "Amazon-Google (Köpcke, Thor, Rahm, VLDB 2010) in the structured version and split of DeepMatcher (Mudgal et al., SIGMOD 2018)",
+  "url": "https://github.com/anhaidgroup/deepmatcher/blob/master/Datasets.md",
+  "files": [
+   "http://pages.cs.wisc.edu/~anhai/data1/deepmatcher_data/Structured/Amazon-Google/amazon_google_exp_data.zip (sha256 9b19c85c98c6289f38969e4961cb944bdf986123fc42f6bf17283ac6eb502e61): test.csv, tableA.csv, tableB.csv"
+  ],
+  "split": "test (2,293 labelled pairs, 234 matches)",
+  "version": "archive files dated 2018-06-04; Datasets.md at commit a89ffe6cd246f690afd2772e47eb071741160f16"
+ },
+ "licence": "DeepMatcher Datasets.md: no licence stated for the data (repository code: BSD 3-Clause); origin of the records, Leipzig benchmark page: \"These datasets are made available by the database group of Prof. Erhard Rahm under the Creative Commons license\" (link target: https://creativecommons.org/licenses/by/4.0/)",
+ "redistribution": "rebuild script only",
+ "labels": "mixed: matches from the reference mapping of the original authors; non-matches are blocked candidate pairs that are not in the mapping",
+ "item_source": "public test set",
+ "metric": "auroc",
+ "chance": 0.5,
+ "rows": 1000,
+ "groups": null,
+ "question_type": "choice",
+ "options": 2,
+ "notes": "102 matches + 898 non-matches: the class ratio of the test split (234 matches in 2,293 pairs), drawn per class (seed 20261007). record_a is the row of tableA.csv (left), record_b the row of tableB.csv (right), fields title, manufacturer, price; values are the preprocessed (lower-cased, tokenised) strings of the DeepMatcher files, empty where the source is empty. This is the structured version: DeepMatcher removed the long description attribute of the original records. The pairs are candidates that survived DeepMatcher's blocking; a pair is a match if it is in the reference mapping of the original authors, otherwise a non-match. The split is DeepMatcher's random 3:1:1 split of the pairs, so the same records also occur in the public training and validation pairs. Licence: the origin (Leipzig) is under CC BY 4.0, the DeepMatcher files state none: kept as rebuild script only.",
+ "track": "reference",
+ "version": "1",
+ "items_sha256": "e6bfbc17c191bc8c07eee33ea7050633e5279d1f6117727822e400234b9ad9fa",
+ "group_kind": null,
+ "exposure": {
+  "ours": "not_named",
+  "base": "unknown",
+  "torchcast_27b": "unknown",
+  "jev_27b_at": "unknown",
+  "clef": "unknown",
+  "jev-1.13": "unknown",
+  "chat_model": "unknown",
+  "pplx_v11_27b": "not_named",
+  "kev_27b": "not_named"
+ },
+ "build": {
+  "from": "v0/tasks/entity_match_amazon_google",
+  "source_items_sha256": "e6bfbc17c191bc8c07eee33ea7050633e5279d1f6117727822e400234b9ad9fa",
+  "clean_ids_applied": true,
+  "note": null,
+  "v1_0_items_sha256": "e6bfbc17c191bc8c07eee33ea7050633e5279d1f6117727822e400234b9ad9fa",
+  "same_items_as_v1_0": true
+ }
+}

@@ -1,0 +1,49 @@
+{
+ "task": "cap_boundary_card",
+ "layer": "A",
+ "title": "Capability boundary from a model card",
+ "decision": "whether a given public chat model will answer a given question correctly (asked before the model is called)",
+ "source": {
+  "name": "stored sampled answers of four public chat models on evaluation-only question sets (own runs)",
+  "url": "",
+  "files": [
+   "capb_items.jsonl"
+  ],
+  "split": "evaluation questions of NQ, PopQA, WebQuestions, TriviaQA; BBH tasks, StrategyQA, FOLIO, ProofWriter, DROP; SVAMP, ASDiv, GSM-Hard, GSM-Plus, MAWPS",
+  "version": "2026-10-06"
+ },
+ "licence": "labels: own; question texts keep the licences of their sources [[to be listed per source]]",
+ "redistribution": "rebuild script only",
+ "labels": "programmatic",
+ "item_source": "new labels on public inputs",
+ "metric": "mse_soft",
+ "chance": null,
+ "rows": 912,
+ "groups": null,
+ "question_type": "choice",
+ "options": 2,
+ "notes": "soft.yes = k / n correct among n sampled answers (meta.n, meta.k); the state holds the model's name and size only Decontamination against the authors' training data (scan of 7 October 2026, 1,546,178 training records): 78 of 990 items removed because a text field of the item occurs in it; 912 items remain.",
+ "track": "reference",
+ "version": "1",
+ "items_sha256": "9064cf3b0fc59100d72499ecea293533d6352eb2dd163ca1cd2f4b7110219ec0",
+ "group_kind": null,
+ "exposure": {
+  "ours": "exposed",
+  "base": "unknown",
+  "torchcast_27b": "unknown",
+  "jev_27b_at": "unknown",
+  "clef": "unknown",
+  "jev-1.13": "unknown",
+  "chat_model": "unknown",
+  "pplx_v11_27b": "exposed",
+  "kev_27b": "exposed"
+ },
+ "build": {
+  "from": "v0/tasks/cap_boundary_card",
+  "source_items_sha256": "9064cf3b0fc59100d72499ecea293533d6352eb2dd163ca1cd2f4b7110219ec0",
+  "clean_ids_applied": true,
+  "note": null,
+  "v1_0_items_sha256": "9064cf3b0fc59100d72499ecea293533d6352eb2dd163ca1cd2f4b7110219ec0",
+  "same_items_as_v1_0": true
+ }
+}

@@ -1,0 +1,23 @@
+DecisionPivot
+Copyright 2026 StartLux Labs
+
+The code in this repository is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+Items
+-----
+The repository does not contain the items of the benchmark, except the sample items in tests/samples/, which are generated core items
+(no third-party text). The generated core items are released under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/), as on the Hugging Face dataset card
+(https://huggingface.co/datasets/startlux-models/DecisionPivot). DecisionPivot is for evaluation only: its items must not be used as training data or put
+into the prompts of a model that is being trained.
+
+Reference track
+---------------
+The 35 reference tasks are not ours: they are public test sets created by other authors, who keep their copyright, converted to the
+item format. Every converted item follows the licence of its source, which the task card of
+the task names (field "licence" in releases/*/task_cards/<task>.json), together with the source, its address and the version used. The
+scripts in reference/build/ download the source files of 13 tasks from their official locations and convert them; the terms of those
+sources apply to the files they download and to the items they write. This repository contains none of these source files.
+
+Third-party code
+----------------
+This repository contains no third-party code.

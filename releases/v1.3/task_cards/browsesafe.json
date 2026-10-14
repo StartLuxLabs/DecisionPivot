@@ -1,0 +1,50 @@
+{
+ "task": "browsesafe",
+ "layer": "B",
+ "title": "BrowseSafe-Bench: does this web page contain an injected instruction?",
+ "decision": "whether a web page handed to a browsing agent contains an instruction that was injected into it (yes) or not (no)",
+ "source": {
+  "name": "BrowseSafe-Bench (BrowseSafe: Understanding and Preventing Prompt Injection Within AI Browser Agents, arXiv:2511.20597)",
+  "url": "https://huggingface.co/datasets/perplexity-ai/browsesafe-bench",
+  "files": [
+   "test.parquet"
+  ],
+  "split": "test (3,680 pages: 1,824 yes, 1,856 no)",
+  "version": "commit b506fb5bc7fd4472c8738055a67a0ef6406afdc9 (last modified 2025-12-04), downloaded 2026-10-07"
+ },
+ "licence": "MIT (card tag `mit`; the LICENSE file of the data set repository is the MIT License, copyright Perplexity AI, Inc., 2025)",
+ "redistribution": "items included",
+ "labels": "programmatic: label by construction of the benchmark (pages with an inserted payload = yes, pages without = no); payload text partly written by a model (see notes)",
+ "item_source": "public test set",
+ "metric": "accuracy",
+ "chance": 0.5,
+ "rows": 1000,
+ "groups": null,
+ "question_type": "choice",
+ "options": 2,
+ "notes": "500 yes + 500 no. Test split: 3,680 pages (1,824 yes, 1,856 no); the data set has two columns (content, label) and no id, so meta.row (= source id `test-NNNN`) is the row number in test.parquet. 2,064 pages longer than 40,000 characters were dropped before sampling (994 yes, 1,070 no), leaving 830 yes and 786 no (mean length 17,517 and 18,105 characters). Length matching: the pools differ in the short range (pages of under 1,000 characters are mostly yes), so rows were put in length buckets (100 characters below 2,000, 1,000 above); 664 matched pairs were possible in 54 buckets, 500 per class were drawn with random.Random(20261007) with bucket quotas proportional to the possible pairs (largest remainder); mean length in the sample 18,572 (yes) and 18,593 (no) characters; the row order is shuffled with the same generator. state = the HTML content of the page as given, a string. Caveats for a paper: the label is by construction, not a human judgement of each page; the card says the base text comes from real web sites (anonymised), the pages are generated from templates (eight structural styles), the injections were made by letting a model rewrite page content to carry a payload or by inserting hidden payloads programmatically, and the `no` pages include distractor elements (comments, data attributes, hidden text, form fields) that are meant to look like instructions. The injected texts are instructions aimed at a model and are data to classify.",
+ "track": "reference",
+ "version": "1",
+ "items_sha256": "66834ecd978ef6d9b50fc8c37f4d658034b9f6961e62cbc60930256ba822575e",
+ "group_kind": null,
+ "exposure": {
+  "ours": "not_named",
+  "base": "unknown",
+  "torchcast_27b": "unknown",
+  "jev_27b_at": "unknown",
+  "clef": "unknown",
+  "jev-1.13": "unknown",
+  "chat_model": "unknown",
+  "pplx_v11_27b": "unknown",
+  "kev_27b": "not_named",
+  "ours_final27": "not_named"
+ },
+ "build": {
+  "from": "v0/tasks/browsesafe",
+  "source_items_sha256": "66834ecd978ef6d9b50fc8c37f4d658034b9f6961e62cbc60930256ba822575e",
+  "clean_ids_applied": true,
+  "note": null,
+  "v1_0_items_sha256": "66834ecd978ef6d9b50fc8c37f4d658034b9f6961e62cbc60930256ba822575e",
+  "same_items_as_v1_0": true
+ }
+}

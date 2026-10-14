@@ -1,0 +1,56 @@
+{
+ "task": "contextual_judge",
+ "layer": "C",
+ "title": "ContextualJudgeBench: which of two responses is better given the context and the question?",
+ "decision": "which of two responses to a question about a given context (question answering or summarisation) is the better one, by the data set's label",
+ "source": {
+  "name": "ContextualJudgeBench (Does Context Matter? ContextualJudgeBench for Evaluating LLM-based Judges in Contextual Settings, arXiv:2503.15620)",
+  "url": "https://huggingface.co/datasets/Salesforce/ContextualJudgeBench",
+  "files": [
+   "data/completeness_qa-00000-of-00001.parquet",
+   "data/completeness_summ-00000-of-00001.parquet",
+   "data/conciseness_qa-00000-of-00001.parquet",
+   "data/conciseness_summ-00000-of-00001.parquet",
+   "data/faithfulness_qa-00000-of-00001.parquet",
+   "data/faithfulness_summ-00000-of-00001.parquet",
+   "data/refusal_answerable-00000-of-00001.parquet",
+   "data/refusal_unanswerable-00000-of-00001.parquet"
+  ],
+  "split": "all eight splits (2,000 pairs)",
+  "version": "commit 7ef98f8a800ac9c6e29e19f0ed114213c5cd8e27 (last modified 2025-03-21), downloaded 2026-10-07"
+ },
+ "licence": "cc-by-4.0",
+ "redistribution": "items included",
+ "labels": "mixed: pairs built from existing human annotations and from model-written changes (refusals, unfaithful responses, responses with information left out, responses padded with quotations), with human checks, as described in the paper",
+ "item_source": "public test set",
+ "metric": "accuracy",
+ "chance": 0.5,
+ "rows": 894,
+ "groups": null,
+ "question_type": "choice",
+ "options": 2,
+ "notes": "1000 of the 2,000 pairs. Before sampling: 42 rows dropped because the context is longer than 30,000 characters (completeness_summ 6, conciseness_qa 1, conciseness_summ 11, faithfulness_summ 20, refusal_answerable 4), then 12 exact repeats (same context, question and both responses; conciseness_summ 12; the first id is kept); pools per split: completeness_qa 250, completeness_summ 245, conciseness_qa 254, conciseness_summ 221, faithfulness_qa 250, faithfulness_summ 230, refusal_answerable 246, refusal_unanswerable 250. Length matching: the label of several splits is about length (conciseness: the better response is the shorter one; the share by split is given below), and a plain draw of 1000 rows in proportion to the splits has a shorter better response in 0.600 of the rows (reference draw made by this script; the first plain draw made while building this task gave 0.626 on the shortcut audit, rule 'pick the shortest', above its flag level of 0.60). So the rows were put in buckets of the absolute difference in length of the two responses (100 characters below 2,000, 1,000 above), split by the sign of the difference, and the same number of rows was taken from both signs in every bucket (quota proportional to the matched pairs of the bucket, largest remainder; 15 buckets; random.Random(20261007)): 500 rows with the better response longer, 500 shorter; 7 rows with two responses of equal length are not in this draw. The matched draw does not keep the split proportions: completeness_qa 125, completeness_summ 141, conciseness_qa 51, conciseness_summ 110, faithfulness_qa 146, faithfulness_summ 141, refusal_answerable 129, refusal_unanswerable 157 (meta.split); share of rows with the better response longer by split: completeness_qa 0.56, completeness_summ 0.73, conciseness_qa 0.00, conciseness_summ 0.22, faithfulness_qa 0.49, faithfulness_summ 0.62, refusal_answerable 0.22, refusal_unanswerable 0.74. The data give the better response (`positive_response`) and the worse one and fix no order, so the order is drawn per row with random.Random(20261007): within every split half of the rows (+-1) show the better response first; gold A 500, B 500; meta.order lists the source fields shown as A and B. The meaning of 'better' depends on the split (the paper's hierarchy: refusal when the context cannot answer the question and an answer when it can, then faithfulness to the context, then completeness, then conciseness); the question sentence is the same for every row and does not name the criterion, meta.split does. state.context = `context`, state.question = `question`; the questions of summarisation rows are summarisation instructions. Several rows can share a context (1,810 different context-question pairs in the 2,000 rows). The pairs are model- and human-written texts taken from other data sets (meta.source); their licences were not checked. Decontamination against the authors' training data (scan of 7 October 2026, 1,546,178 training records): 106 of 1000 items removed because a text field of the item occurs in it; 894 items remain.",
+ "track": "reference",
+ "version": "1",
+ "items_sha256": "b3cb40252ac8a03206c6b5e61be9d5f5f4de9e28bda4fb244a53a53b07a621e0",
+ "group_kind": null,
+ "exposure": {
+  "ours": "exposed",
+  "base": "unknown",
+  "torchcast_27b": "unknown",
+  "jev_27b_at": "unknown",
+  "clef": "unknown",
+  "jev-1.13": "unknown",
+  "chat_model": "unknown",
+  "pplx_v11_27b": "not_named",
+  "kev_27b": "not_named"
+ },
+ "build": {
+  "from": "v0/tasks/contextual_judge",
+  "source_items_sha256": "b3cb40252ac8a03206c6b5e61be9d5f5f4de9e28bda4fb244a53a53b07a621e0",
+  "clean_ids_applied": true,
+  "note": null,
+  "v1_0_items_sha256": "b3cb40252ac8a03206c6b5e61be9d5f5f4de9e28bda4fb244a53a53b07a621e0",
+  "same_items_as_v1_0": true
+ }
+}

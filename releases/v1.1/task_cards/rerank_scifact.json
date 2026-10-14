@@ -1,0 +1,49 @@
+{
+ "task": "rerank_scifact",
+ "layer": "G",
+ "title": "Reranking, SciFact (50 candidates per query)",
+ "decision": "how well a retrieved passage supplies what a query asks for; the candidates of a query are ranked by the answer",
+ "source": {
+  "name": "system1-rerank-bench (BEIR SciFact and NFCorpus test queries with hybrid-search candidates)",
+  "url": "https://github.com/dchristopoulos/system1-rerank-bench",
+  "files": [
+   "rr_items.json (built by paper/scripts/search/rr_build.py)"
+  ],
+  "split": "100 test queries, 50 candidates each",
+  "version": "repository as downloaded 2026-10-06"
+ },
+ "licence": "candidate lists: MIT (system1-rerank-bench); SciFact texts and judgments: CC BY-NC 2.0 (as listed by BEIR)",
+ "redistribution": "rebuild script only",
+ "labels": "human",
+ "item_source": "public test set",
+ "metric": "ndcg@10",
+ "chance": null,
+ "rows": 5000,
+ "groups": 100,
+ "question_type": "score",
+ "options": 4,
+ "notes": "All 100 queries with all their candidates (the row cap does not apply to ranking tasks). Graded judgments of the candidates: {0: 4889, 1: 111}; 111 of the 115 judged-relevant documents are among the candidates, so a perfect reranker stays below 1. `gold` is only the placeholder the format requires (3 = highest grade of the set, 2 = a lower positive grade, 0 = not judged relevant); the metric uses meta.relevance and meta.ideal_gains. The rubric wording is the one registered in the source test for decision models, one passage per request.",
+ "track": "reference",
+ "version": "1",
+ "items_sha256": "cdaaf5b2c3f13a42c3e521fc40b7d649a0cd6c7445abd81d7f0b0263d2da29ab",
+ "group_kind": "ranking",
+ "exposure": {
+  "ours": "not_named",
+  "base": "unknown",
+  "torchcast_27b": "unknown",
+  "jev_27b_at": "unknown",
+  "clef": "unknown",
+  "jev-1.13": "unknown",
+  "chat_model": "unknown",
+  "pplx_v11_27b": "exposed",
+  "kev_27b": "not_named"
+ },
+ "build": {
+  "from": "v0/tasks/rerank_scifact",
+  "source_items_sha256": "cdaaf5b2c3f13a42c3e521fc40b7d649a0cd6c7445abd81d7f0b0263d2da29ab",
+  "clean_ids_applied": true,
+  "note": null,
+  "v1_0_items_sha256": "cdaaf5b2c3f13a42c3e521fc40b7d649a0cd6c7445abd81d7f0b0263d2da29ab",
+  "same_items_as_v1_0": true
+ }
+}

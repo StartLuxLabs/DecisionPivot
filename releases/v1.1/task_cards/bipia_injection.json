@@ -1,0 +1,50 @@
+{
+ "task": "bipia_injection",
+ "layer": "B",
+ "title": "Inserted instruction in external content (BIPIA test contexts with and without an attack string)",
+ "decision": "whether external content handed to an assistant (an e-mail) contains an instruction to the assistant that a third party inserted",
+ "source": {
+  "name": "BIPIA (Yi et al., 2023, arXiv:2312.14197)",
+  "url": "https://github.com/microsoft/BIPIA",
+  "files": [
+   "benchmark/email/test.jsonl",
+   "benchmark/text_attack_test.json"
+  ],
+  "split": "test contexts and test attack strings",
+  "version": "commit a004b69ec0dd446e0afd461d98cb5e96e120a5d0 (2024-04-15)"
+ },
+ "licence": "MIT License",
+ "redistribution": "items included",
+ "labels": "programmatic",
+ "item_source": "public test set",
+ "metric": "accuracy",
+ "chance": 0.5,
+ "rows": 88,
+ "groups": 44,
+ "question_type": "choice",
+ "options": 2,
+ "notes": "Labels by construction: gold no = a test context as shipped, gold yes = the same context with one attack string of the benchmark inserted; rows: 44 yes + 44 no, one pair per distinct context (group = context; pair accuracy can be computed, chance 0.25). Parts used (email: 50 test rows, 44 distinct contexts); the question of a test row is not used, so contexts that repeat under several questions are kept once. Attack files (text: 75 strings of 15 attack types); 44 distinct attack strings of 15 types are used, positions: end 22, start 22 (meta.attack_id, meta.position). The insertion re-implements the benchmark's builder from its source read as text (end: context + newline + attack; start: attack + newline + context); the benchmark's third position, 'middle' (before a sentence picked among the spans of NLTK's Punkt tokenizer), is not built, so every inserted string is the first or the last line of the content. With 44 distinct contexts in the parts used, the task cannot reach 500 + 500. Licence by part, from the repository's NOTICE.md: code: Attribution-ShareAlike 4.0 International ('Stack Exchange dataset'); email: MIT License ('Invoices data in Openai Evals'); table: Attribution-ShareAlike 4.0 International ('WikiTableQuestions dataset'). The WebQA and summarisation contexts are not shipped in the repository. Only the e-mail part is used here; the table and code parts can be added with the build script's PARTS argument and then fall under the share-alike licence. 27 of the 44 e-mails contain an e-mail address (sender names and addresses are shipped in the file). Attack strings are instructions aimed at a model: they are data to classify.",
+ "track": "reference",
+ "version": "1",
+ "items_sha256": "fa5d35a8264d2a3573f11ef16030bc818230925c3001a5aefda1f7028865db7a",
+ "group_kind": "contrast",
+ "exposure": {
+  "ours": "not_named",
+  "base": "unknown",
+  "torchcast_27b": "unknown",
+  "jev_27b_at": "unknown",
+  "clef": "unknown",
+  "jev-1.13": "unknown",
+  "chat_model": "unknown",
+  "pplx_v11_27b": "exposed",
+  "kev_27b": "not_named"
+ },
+ "build": {
+  "from": "v0/tasks/bipia_injection",
+  "source_items_sha256": "fa5d35a8264d2a3573f11ef16030bc818230925c3001a5aefda1f7028865db7a",
+  "clean_ids_applied": true,
+  "note": null,
+  "v1_0_items_sha256": "fa5d35a8264d2a3573f11ef16030bc818230925c3001a5aefda1f7028865db7a",
+  "same_items_as_v1_0": true
+ }
+}
