@@ -2,6 +2,17 @@
 
 **Evaluating decision models at the control points of LLM systems.**
 
+[Paper (arXiv:2610.28522)](https://arxiv.org/abs/2610.28522) · [Dataset (Hugging Face)](https://huggingface.co/datasets/startlux-models/DecisionPivot) · [Citation](#citation)
+
+<p align="center">
+  <img src="docs/figures/figure1.png" alt="Figure 1 of the DecisionPivot paper" width="100%">
+</p>
+
+*Figure 1 of the paper.* (a) A contrast pair from `state_goal`: the two traces differ only in the order of steps 3 and 5, which flips
+whether the goal is reached. Among the models shown, only the two SL-27B variants answer both members right. (b) Six open 27B decision
+models and the hosted Jev on the public test sets and on DecisionPivot: models with similar public scores differ widely in pair accuracy
+and in how much of the work they can decide at a 5% error rate.
+
 DecisionPivot was called DecideBench until 14 October 2026. The items and their hashes did not change.
 
 A *decision model* reads a case, the *state*, and a typed question with a fixed set of options, and returns a probability for every option
@@ -83,7 +94,7 @@ python3 scoring/check_data.py                   # release 1.1: SHA-256 and size 
 
 The dataset holds release 1.1: the core items and the items of all 35 reference tasks, which stay under the licences of their sources.
 13 reference tasks can also be rebuilt from their official sources with `reference/rebuild.py` (see [below](#rebuild-reference-tasks-from-their-sources)).
-The paper reports the reference track on release 1.3, which drops 1,871 items that were found in the training data of our final models;
+The [paper](https://arxiv.org/abs/2610.28522) reports the reference track on release 1.3, which drops 1,871 items that were found in the training data of our final models;
 derive it from release 1.1 with
 
 ```bash
@@ -222,12 +233,17 @@ python3 tests/test_regenerate.py     # two families from the published seed and 
 
 ## Citation
 
+If you use DecisionPivot, please cite the [paper](https://arxiv.org/abs/2610.28522):
+
 ```bibtex
-@misc{startlux2026decisionpivot,
-  title  = {DecisionPivot: A Diagnostic Benchmark for Decision Models in LLM Systems},
-  author = {{StartLux Labs}},
-  year   = {2026},
-  note   = {Preprint}
+@misc{zhuang2026decisionpivot,
+  title         = {DecisionPivot: A Diagnostic Benchmark for Decision Models in LLM Systems},
+  author        = {Zhuang, Xialie and Lei, Mingcong and Su, Zunhai and Liu, Ri and Li, Jianjin and Ma, Peixian and Pan, Jia and Wong, Ngai and Chen, Guanhua and Kuo, Chuan-Wei},
+  year          = {2026},
+  eprint        = {2610.28522},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.AI},
+  url           = {https://arxiv.org/abs/2610.28522}
 }
 ```
 
